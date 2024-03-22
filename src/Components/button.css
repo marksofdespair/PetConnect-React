@@ -1,0 +1,14 @@
+.gen-button {
+    padding: 8px 16px;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    background-color: #c7fcc9; /* Default background color */
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Add transition for color change */
+  }
+  
+  .gen-button:hover {
+    background-color: #45a049; /* Change background color on hover */
+  }
