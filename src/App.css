@@ -5,6 +5,7 @@
   text-align: center;
 }
 
+/*
 .logo {
   height: 6em;
   padding: 1.5em;
@@ -35,8 +36,14 @@
 
 .card {
   padding: 2em;
+} */
+
+#simplenav {
+  list-style-type: none; /* Remove default list styles */
+  padding: 0; /* Remove default padding */
 }
 
-.read-the-docs {
-  color: #888;
+#simplenav li {
+  display: inline; /* Display list items horizontally */
+  margin-right: 10px; /* Add some spacing between list items */
 }
