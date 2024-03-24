@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import Button from '../Components/button';
 
 const ServiceSearch = () => {
   const [serviceType, setServiceType] = useState('');
@@ -46,7 +47,7 @@ const ServiceSearch = () => {
       ) : (
         <p>No search results yet.</p>
       )}
-      <Link to="/userhome">
+      <Link to="/UserHome">
       <Button type="submit" text="Go Back" />
       </Link>
     </div>
