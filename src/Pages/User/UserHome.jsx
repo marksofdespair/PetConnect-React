@@ -15,7 +15,7 @@ const UserHome = () => {
   return (
     <div>
       <h2>User Panel</h2>
-      {/* Add your User Panel content here */}
+      {/* Add User Panel content here */}
       <button onClick={handleAddPet}>Add Pet</button> {/* Button for adding a pet */}
       <button onClick={handleSearchService}>Find a Service</button> {/* Button for searching for a service */}
       <br />

@@ -1,0 +1,22 @@
+/* Layout.css */
+
+/* Apply flexbox layout to header */
+header {
+    display: flex;
+    align-items: center; /* Align items vertically */
+    justify-content: space-between; /* Distribute items along the main axis */
+  }
+  
+  /* Align h1 to the left */
+  h1 {
+    display: flex; /* Allow h1 and img to be flex items */
+    align-items: center; /* Align items vertically */
+  }
+  
+  /* Apply flexbox layout to main content */
+  main {
+    display: flex;
+    flex-direction: column; /* Should make main content is stacked vertically */
+    align-items: center; /* Should align items horizontally */
+  }
+  

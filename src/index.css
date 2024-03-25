@@ -66,3 +66,37 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+/* Apply styles to all labels */
+label {
+  display: block; 
+  margin-bottom: 0.5rem; 
+}
+
+/* Apply styles to all input fields */
+input {
+  width: 100%; 
+  padding: 0.5rem; 
+  margin-bottom: 1rem; 
+  border: 1px solid #ccc; 
+  border-radius: 4px; 
+}
+
+/* Apply styles to submit buttons */
+input[type="submit"] {
+  background-color: #007bff; 
+  color: #fff; 
+  border: none; 
+  padding: 0.5rem 1rem; 
+  cursor: pointer; 
+}
+
+/* Apply styles to text areas */
+textarea {
+  width: 100%; 
+  padding: 0.5rem; 
+  margin-bottom: 1rem; 
+  border: 1px solid #ccc; 
+  border-radius: 4px; 
+}
+
