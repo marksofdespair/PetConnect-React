@@ -8,6 +8,8 @@ import ServiceSearch from './Pages/ServiceSearch';
 import AddService from './Pages/Provider/AddService';
 import Settings from './Pages/Provider/Settings';
 import './App.css';
+import './Layout';
+import { AboutUs } from './Pages/AboutUs';
 
 const App = () => {
   return (
@@ -20,7 +22,8 @@ const App = () => {
             <Route path="/UserHome" element={<UserHome />} /> {/* Route for UserHome */}
             <Route path="/ServiceSearch" element={<ServiceSearch />} /> {/* Route for ServiceSearch */}
             <Route path="/AddService" element={<AddService />} /> {/* Route for AddService */}
-            <Route path="/Settings" element={<Settings />} /> {/* Route for AddService */}
+            <Route path="/Settings" element={<Settings />} /> {/* Route for Settings */}
+            <Route path="/AboutUs" element={<AboutUs />} /> {/* Route for AddService */}
           </Route>
         </Routes>
       </Router>

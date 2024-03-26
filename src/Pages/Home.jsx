@@ -11,9 +11,6 @@ const Home = () => {
                 <nav>
                     <ul id="simplenav">
                         <li>
-                            <Link to="/UserHome">User Panel</Link> {/* Link to UserHome page */}
-                        </li>
-                        <li>
                             <Link to="/ServiceSearch">Find a Service</Link> {/* Link to ServiceSearch page */}
                         </li>
                     </ul>

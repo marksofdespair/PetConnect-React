@@ -1,19 +1,18 @@
-import { Link } from "react-router-dom"
+import { Link } from 'react-router-dom';
+import '../Layout.css';
 
 export function NavBar() {
-    return (
-        <>
-            <Link to="/">
-                <button>Home</button>
-            </Link>
-            <Link to="/Settings">
-                <button>Settings</button>
-            </Link>
-            <Link to="/ServiceSearch">
-                <button>Search for Services</button>
-            </Link>
-            <Link to="/About Us">
-                <button>About Us</button></Link>
-        </>
-    )
+  return (
+    <ul className="navBar">
+
+        <Link to="/">Home</Link>
+
+        <Link to="/Settings">Settings</Link>
+
+        <Link to="/ServiceSearch">Search for Services</Link>
+
+        <Link to="/About Us">About Us</Link>
+
+    </ul>
+  );
 }

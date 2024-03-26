@@ -1,22 +1,50 @@
-/* Layout.css */
-
 /* Apply flexbox layout to header */
 header {
-    display: flex;
-    align-items: center; /* Align items vertically */
-    justify-content: space-between; /* Distribute items along the main axis */
-  }
-  
-  /* Align h1 to the left */
-  h1 {
-    display: flex; /* Allow h1 and img to be flex items */
-    align-items: center; /* Align items vertically */
-  }
-  
-  /* Apply flexbox layout to main content */
-  main {
-    display: flex;
-    flex-direction: column; /* Should make main content is stacked vertically */
-    align-items: center; /* Should align items horizontally */
-  }
+  display: flex;
+  align-items: center; /* Align items vertically */
+  justify-content: space-between; /* Distribute items along the main axis */
+  padding: 1rem; /* Add padding for spacing */
+  background-color: #333; /* Adjust background color as needed */
+  color: #fff; /* Adjust text color as needed */
+}
+
+/* Align h1 to the left */
+h1 {
+  display: flex; /* Allow h1 and img to be flex items */
+  align-items: center; /* Align items vertically */
+}
+
+/* Applies flexbox layout to main content */
+main {
+  display: flex;
+  flex-direction: column; /* Should make main content is stacked vertically */
+  align-items: center; /* Should align items horizontally */
+  padding: 2rem; /* Add padding for spacing */
+  text-align: center; /* Align text center */
+  background-color: #242424; /* Modify this to adjust background color */
+  margin: 0; /* Remove default margin */
+}
+
+/* Applies styling to actual NavBar */
+.navBar {
+  display: flex; /* Use flexbox layout */
+  align-items: center; /* Align items vertically */
+  justify-content: space-between; /* Distributes items evenly */
+  padding: 1rem; /* Modify this to padding for spacing */
+  background-color: #333; /* Modify this to adjust background color */
+  color: #fff; /* Modify this to adjust text color */
+}
+
+/* Applies styles to navigation bar links */
+.navBar a {
+  text-decoration: none;
+  color: #fff; /* Modify this to adjust link color as needed */
+  margin-right: 1rem; /* Add space between links */
+  font-weight: bold; /* Add font weight */
+}
+
+/* Applies hover styles to navigation bar links */
+.navBar a:hover {
+  color: #ffa500; /* Modify to change color on hover */
+}
   
