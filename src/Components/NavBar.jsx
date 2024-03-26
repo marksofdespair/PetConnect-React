@@ -11,7 +11,7 @@ export function NavBar() {
 
         <Link to="/ServiceSearch">Search for Services</Link>
 
-        <Link to="/About Us">About Us</Link>
+        <Link to="/AboutUs">About Us</Link>
 
     </ul>
   );

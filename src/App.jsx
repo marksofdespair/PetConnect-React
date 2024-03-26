@@ -7,9 +7,10 @@ import UserHome from './Pages/User/UserHome';
 import ServiceSearch from './Pages/ServiceSearch'; 
 import AddService from './Pages/Provider/AddService';
 import Settings from './Pages/Provider/Settings';
+import AboutUs from './Pages/AboutUs';
+import CreateAccount from './Pages/CreateAccount';
 import './App.css';
 import './Layout';
-import { AboutUs } from './Pages/AboutUs';
 
 const App = () => {
   return (
@@ -24,6 +25,7 @@ const App = () => {
             <Route path="/AddService" element={<AddService />} /> {/* Route for AddService */}
             <Route path="/Settings" element={<Settings />} /> {/* Route for Settings */}
             <Route path="/AboutUs" element={<AboutUs />} /> {/* Route for AddService */}
+            <Route path="/CreateAccount" element={<CreateAccount />} /> {/* Route for CreateAccount */}
           </Route>
         </Routes>
       </Router>

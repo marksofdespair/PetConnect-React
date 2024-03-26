@@ -19,16 +19,17 @@ const ServiceSearch = () => {
     setSearchResults([]);
   };
 
+  // Eventually this will probably be check-boxes. Page is currently inoperable.
   return (
     <div>
       <h2>Search Page</h2>
       <form onSubmit={handleSubmit}>
         <label>
-          Select a service type:
+          Select a service type: 
           <select value={serviceType} onChange={handleServiceTypeChange}>
             <option value="">Select a service</option>
-            <option value="Training">Training</option>
-            <option value="Grooming">Grooming</option>
+            <option value="Training">Training</option> 
+            <option value="Grooming">Grooming</option> 
             <option value="Pet Sitting">Pet Sitting</option>
             <option value="Dog Walking">Dog Walking</option>
           </select>

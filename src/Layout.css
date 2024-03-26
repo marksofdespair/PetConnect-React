@@ -45,6 +45,6 @@ main {
 
 /* Applies hover styles to navigation bar links */
 .navBar a:hover {
-  color: #ffa500; /* Modify to change color on hover */
+  color: #E7D082; /* Modify to change color on hover */
 }
   
