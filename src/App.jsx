@@ -9,6 +9,8 @@ import AddService from './Pages/Provider/AddService';
 import Settings from './Pages/Provider/Settings';
 import AboutUs from './Pages/AboutUs';
 import CreateAccount from './Pages/CreateAccount';
+import ProviderProfile from './Pages/Provider/ProviderProfile';
+import UserProfile from './Pages/User/UserProfile';
 import './App.css';
 import './Layout';
 
@@ -26,6 +28,8 @@ const App = () => {
             <Route path="/Settings" element={<Settings />} /> {/* Route for Settings */}
             <Route path="/AboutUs" element={<AboutUs />} /> {/* Route for AddService */}
             <Route path="/CreateAccount" element={<CreateAccount />} /> {/* Route for CreateAccount */}
+            <Route path="/ProviderProfile" element={<ProviderProfile />} /> {/* Rout for ProviderProfile */}
+            <Route path="/UserProfile" element={<UserProfile />} /> {/* Rout for UserProfile */}
           </Route>
         </Routes>
       </Router>
