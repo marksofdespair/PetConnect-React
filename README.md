@@ -14,3 +14,7 @@ Several pages and components are currently nonfunctional but routed. Should work
 - If you are adding on to the CSS, please label it and note what features it's affecting.
 - Add new pages in App.jsx and route them using syntax <Route path="/PAGENAME" element={<ELEMENT />} /> {/* Rout for ELEMENT */} 
 - If they're not exported, don't Route them. It will cause the app to render a blank white page. Export the page and then route it.
+
+# KNOWN ISSUE
+
+- When cloning the repository, the [Page] ServiceSearch.jsx may be created as servicesearch.jsx and cause the page to break. Please check before running run dev so it works on startup C:
