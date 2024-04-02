@@ -1,9 +1,25 @@
 import React from 'react';
 import PropTypes from 'prop-types'; 
+import axios from 'axios';
 
 const ProviderProfile = ({ provider }) => {
-  // Destructure provider object to access its properties
+  // Destructure provider object to access properties
   const { name, icon, titles, reviews } = provider;
+  const [additionalInfo, setAdditionalInfo] = useState('');
+
+  useEffect(() => {
+    // Fetch additional info about the provider
+    const fetchAdditionalInfo = async () => {
+      try {
+        const response = await axios.get(`/api/providers/${name}`); // PLACEHOLDER FOR API URL, REPLACE
+        setAdditionalInfo(response.data.additionalInfo);
+      } catch (error) {
+        console.error('Error fetching additional provider info:', error);
+      }
+    };
+
+    fetchAdditionalInfo();
+  }, [name]);
 
   return (
     <div className="provider-profile">
@@ -28,6 +44,10 @@ const ProviderProfile = ({ provider }) => {
             <p>Rating: {review.rating}</p>
           </div>
         ))}
+      </div>
+      <div>
+        <h3>Additional Information:</h3>
+        <p>{additionalInfo}</p>
       </div>
     </div>
   );
