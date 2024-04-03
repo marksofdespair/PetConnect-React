@@ -76,7 +76,7 @@ const UserSettings = () => {
         <button type="submit">Save Changes</button>
       </form>
       <br />
-      <Link to="/UserHome">Go Back</Link>
+      <Link to="/UserHome">Go Back</Link><br></br><Link to="/AddPet">Add a Pet</Link>
     </div>
   );
 };
