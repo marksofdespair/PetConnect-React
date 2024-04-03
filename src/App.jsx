@@ -15,6 +15,9 @@ import UserProfile from './Pages/User/UserProfile';
 import UserSettings from './Pages/User/UserSettings';
 import './App.css';
 import './Layout';
+import AddCat from './Pages/User/AddCat';
+import AddDog from './Pages/User/AddDog';
+import AddPet from './Pages/User/AddPet';
 
 const App = () => {
   return (
@@ -33,7 +36,9 @@ const App = () => {
             <Route path="/AboutUs" element={<AboutUs />} /> {/* Route for AddService */}
             <Route path="/CreateAccount" element={<CreateAccount />} /> {/* Route for CreateAccount */}
             <Route path="/ProviderProfile" element={<ProviderProfile />} /> {/* Rout for ProviderProfile */}
-            <Route path="/UserProfile" element={<UserProfile />} /> {/* Rout for UserProfile */}
+            <Route path="/AddCat" element={<AddCat />} /> {/* Rout for UserProfile */}
+            <Route path="/AddDog" element={<AddDog />} /> {/* Rout for UserProfile */}
+            <Route path="/AddPet" element={<AddPet />} /> {/* Rout for UserProfile */}
           </Route>
         </Routes>
       </Router>

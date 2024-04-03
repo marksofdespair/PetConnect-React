@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 const Settings = () => {
   const [profilePicture, setProfilePicture] = useState('');
