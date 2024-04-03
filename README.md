@@ -17,4 +17,4 @@ Several pages and components are currently nonfunctional but routed. Should work
 
 # KNOWN ISSUE
 
-- When cloning the repository, the [Page] ServiceSearch.jsx may be created as servicesearch.jsx and cause the page to break. Please check before running run dev so it works on startup C:
+- None
