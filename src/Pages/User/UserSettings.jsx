@@ -53,11 +53,11 @@ const UserSettings = () => {
           <input type="text" value={name} onChange={handleNameChange} />
         </label>
         <br />
-        <label>
+        {/*<label>
           About:
           <textarea value={about} onChange={handleAboutChange} />
         </label>
-        <br />
+        <br />*/}
         <label>
           Password:
           <input type="password" value={password} onChange={handlePasswordChange} />
