@@ -7,8 +7,8 @@ const AddPet = () => {
       <div>
         <p>Select the species of your pet:</p>
         <ul>
-          <li><a href="/add-dog">Dog</a></li>
-          <li><a href="/add-cat">Cat</a></li>
+          <li><a href="/AddDog">Dog</a></li>
+          <li><a href="/AddCat">Cat</a></li>
         </ul>
       </div>
     </div>
