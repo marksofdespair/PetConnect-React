@@ -21,7 +21,7 @@ const AddCat = () => {
 
   return (
     <div>
-      <h1>Tell Us About Your Dog:</h1>
+      <h1>Tell Us About Your Cat:</h1>
       <form onSubmit={handleSubmit}>
         <div className="form-group">
           <label>Name:</label>
