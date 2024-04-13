@@ -8,9 +8,10 @@ header {
   color: #fff; /* Adjust text color as needed */
 }
 
-/* Align h1 to the left */
+/* Align h1 to the center */
 h1 {
-  display: flex; /* Allow h1 and img to be flex items */
+  display: flex; /* Allows h1 and img to be flex items */
+  justify-content: center; /* Center items horizontally */
   align-items: center; /* Align items vertically */
 }
 
