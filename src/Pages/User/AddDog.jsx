@@ -1,21 +1,39 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 const AddDog = () => {
   const [name, setName] = useState('');
   const [breed, setBreed] = useState('');
+  const [breeds, setBreeds] = useState([]);
   const [successMessage, setSuccessMessage] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
+
+  useEffect(() => {
+    const fetchBreeds = async () => {
+      try {
+        const response = await axios.get('http://localhost:8080/api/dog-breeds');
+        console.log('Response from API:', response.data);
+        setBreeds(response.data);
+      } catch (error) {
+        console.error('Error fetching dog breeds:', error);
+      }
+    };
+
+    fetchBreeds();
+  }, []);
+
+  // Log the current state of breeds
+  console.log('Current breeds state:', breeds);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await axios.post('/pet/create-dog', { name, breed });
-      setSuccessMessage('Pet added successfully!');
+      const response = await axios.post('/api/dog-breeds', { name, breed });
+      setSuccessMessage('dog added successfully!');
       setName('');
       setBreed('');
     } catch (error) {
-      setErrorMessage('Failed to add pet. Please try again.');
+      setErrorMessage('Failed to add dog. Please try again.');
     }
   };
 
@@ -31,7 +49,11 @@ const AddDog = () => {
           <label>Breed:</label>
           <select value={breed} onChange={(e) => setBreed(e.target.value)} className="form-select">
             <option value="">Select Breed</option>
-            {/* Populate options dynamically. I hope */}
+            {breeds.map((catBreed, index) => (
+              <option key={index} value={catBreed.name}>
+                {catBreed.name}
+              </option>
+            ))}
           </select>
         </div>
         <div className="form-group">

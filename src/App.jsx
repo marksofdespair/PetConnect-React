@@ -13,6 +13,7 @@ import Settings from './Pages/Provider/Settings';
 import AboutUs from './Pages/AboutUs';
 import CreateAccount from './Pages/CreateAccount';
 import ProviderProfile from './Pages/Provider/ProviderProfile';
+import ProviderProfileView from './Pages/User/ProviderProfileView';
 import UserProfile from './Pages/User/UserProfile';
 import UserSettings from './Pages/User/UserSettings';
 import './App.css';
@@ -34,10 +35,12 @@ const App = () => {
             <Route path="/UserSettings" element={<UserSettings />} /> {/* Route for User Settings */}
             <Route path="/AboutUs" element={<AboutUs />} /> {/* Route for AddService */}
             <Route path="/CreateAccount" element={<CreateAccount />} /> {/* Route for CreateAccount */}
-            <Route path="/ProviderProfile" element={<ProviderProfile />} /> {/* Rout for ProviderProfile */}
-            <Route path="/AddCat" element={<AddCat />} /> {/* Rout for AddCat */}
-            <Route path="/AddDog" element={<AddDog />} /> {/* Rout for AddDog */}
-            <Route path="/AddPet" element={<AddPet />} /> {/* Rout for AddPet */}
+            <Route path="/ProviderProfile" element={<ProviderProfile />} /> {/* Route for ProviderProfile */}
+            <Route path="/ProviderProfileView" element={<ProviderProfileView />} /> {/* Route for ProviderProfileView */}
+            <Route path="/UserProfile" element={<UserProfile />} /> {/* Route for UserProfile */}
+            <Route path="/AddCat" element={<AddCat />} /> {/* Route for AddCat */}
+            <Route path="/AddDog" element={<AddDog />} /> {/* Route for AddDog */}
+            <Route path="/AddPet" element={<AddPet />} /> {/* Route for AddPet */}
           </Route>
         </Routes>
       </Router>

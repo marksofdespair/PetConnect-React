@@ -11,7 +11,7 @@ const AddCat = () => {
   useEffect(() => {
     const fetchBreeds = async () => {
       try {
-        const response = await axios.get('https://localhost:8080/api/cat-breeds');
+        const response = await axios.get('http://localhost:8080/api/cat-breeds');
         console.log('Response from API:', response.data);
         setBreeds(response.data);
       } catch (error) {
