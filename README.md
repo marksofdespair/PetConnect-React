@@ -1,7 +1,5 @@
 # PetConnect - React
 
-Original: This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
 Currently, two official plugins are available:
 
 - [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
@@ -17,4 +15,5 @@ Several pages and components are currently nonfunctional but routed. Should work
 
 # KNOWN ISSUE
 
-- None
+- Provider and User profiles render but fail to fetch information. Not necessarily an issue with React build itself, will require further testing
+- Breed lists may be slow to populate, do NOT refresh page without giving it a chance! It's just being a baby.
