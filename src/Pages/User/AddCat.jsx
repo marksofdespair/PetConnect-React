@@ -22,13 +22,13 @@ const AddCat = () => {
     fetchBreeds();
   }, []);
 
-  // Log the current state of breeds
+  // Logs the current state of breeds
   console.log('Current breeds state:', breeds);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await axios.post('/api/cat-breeds', { name, breed });
+      const response = await axios.post('/api/pets', { name, breed });
       setSuccessMessage('Cat added successfully!');
       setName('');
       setBreed('');
