@@ -7,7 +7,9 @@ export function NavBar() {
 
         <Link to="/">Home</Link>
 
-        <Link to="/Settings">Settings</Link>
+        <Link to="/Profile">Profile</Link>
+
+        <Link to="/Pets">Pets</Link>
 
         <Link to="/ServiceSearch">Search for Services</Link>
 
