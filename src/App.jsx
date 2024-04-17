@@ -6,6 +6,7 @@ import Login from './Pages/Login';
 import UserHome from './Pages/User/UserHome';
 import ServiceSearch from './Pages/ServiceSearch'; 
 import AddService from './Pages/Provider/AddService';
+import Pets from './Pages/User/Pets';
 import AddPet from './Pages/User/AddPet';
 import AddCat from './Pages/User/AddCat';
 import AddDog from './Pages/User/AddDog';
@@ -40,6 +41,7 @@ const App = () => {
             <Route path="/ProviderProfileView" element={<ProviderProfileView />} /> {/* Route for ProviderProfileView */}
             <Route path="/UserProfile" element={<UserProfile />} /> {/* Route for UserProfile */}
             <Route path="/Profile" element={<Profile />} /> {/* Route for Profile */}
+            <Route path="/Pets" element={<Pets />} /> {/* Route for Pets */}
             <Route path="/AddCat" element={<AddCat />} /> {/* Route for AddCat */}
             <Route path="/AddDog" element={<AddDog />} /> {/* Route for AddDog */}
             <Route path="/AddPet" element={<AddPet />} /> {/* Route for AddPet */}

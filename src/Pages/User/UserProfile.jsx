@@ -20,7 +20,7 @@ const UserProfile = ({ User }) => {
 
 UserProfile.propTypes = {
   User: PropTypes.shape({
-    name: PropTypes.string.isRequired,
+    name: PropTypes.string,
     icon: PropTypes.string, // URL for the User's icon
   }).isRequired,
 };

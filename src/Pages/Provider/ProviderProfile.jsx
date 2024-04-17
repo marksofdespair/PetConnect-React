@@ -53,18 +53,18 @@ const ProviderProfile = ({ provider }) => {
   );
 };
 
-ProviderProfile.propTypes = {
+/* ProviderProfile.propTypes = {
   provider: PropTypes.shape({
-    name: PropTypes.string.isRequired,
+    name: PropTypes.string,
     icon: PropTypes.string, // URL for the provider's icon
     titles: PropTypes.string, // Training/titles of the provider
     reviews: PropTypes.arrayOf(
       PropTypes.shape({
-        comment: PropTypes.string.isRequired,
-        rating: PropTypes.number.isRequired,
+        comment: PropTypes.string,
+        rating: PropTypes.number,
       })
     ),
   }).isRequired,
-};
+}; */
 
 export default ProviderProfile;

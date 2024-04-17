@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import { Link } from 'react-router-dom';
 
 const Login = () => {
@@ -6,12 +7,24 @@ const Login = () => {
   const [password, setPassword] = useState('');
   const [accountType, setAccountType] = useState('regular');
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    // Handle form submission here, like sending data to backend ig
-    console.log('Username:', username);
-    console.log('Password:', password);
-    console.log('Account Type:', accountType);
+
+    try {
+      const response = await axios.post('http://localhost:8080/api/login', {
+        username,
+        password,
+        accountType,
+      });
+
+      // Assuming login was successful, should redirect the user to another page
+      console.log('Login successful', response.data);
+      // Redirect logic here
+
+    } catch (error) {
+      console.error('Login error:', error);
+      // Handle login error, ex, display error message to user
+    }
   };
 
   return (
@@ -50,9 +63,8 @@ const Login = () => {
             <option value="provider">Service Provider</option>
           </select>
         </div>
-        <button type="submit">Login</button>
-        <br>
-        </br>
+            <button type="submit">Login</button>
+        <br />
         No account? <Link to="/CreateAccount">Create one</Link>.
       </form>
     </div>
