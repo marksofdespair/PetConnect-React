@@ -4,10 +4,9 @@ import axios from 'axios';
 const RegisterForm = () => {
   const [formData, setFormData] = useState({
     name: '',
-    username: '',
-    password: '',
-    verifyPassword: '',
     email: '',
+    password: '', // Add password field
+    verifyPassword: '',
     accountType: '',
   });
   const [error, setError] = useState('');
@@ -24,7 +23,7 @@ const RegisterForm = () => {
       const response = await axios.post('http://localhost:8080/api/register', formData);
 
       console.log('Registration successful:', response.data);
-      // Redirect logic to go here
+      // Redirect logic here
 
     } catch (error) {
       console.error('Registration error:', error.response);
@@ -46,8 +45,8 @@ const RegisterForm = () => {
           <input type="text" name="name" value={formData.name} onChange={handleChange} />
         </label>
         <label>
-          Username:
-          <input type="text" name="username" value={formData.username} onChange={handleChange} />
+          Email:
+          <input type="email" name="email" value={formData.email} onChange={handleChange} />
         </label>
         <label>
           Password:
@@ -56,10 +55,6 @@ const RegisterForm = () => {
         <label>
           Verify Password:
           <input type="password" name="verifyPassword" value={formData.verifyPassword} onChange={handleChange} />
-        </label>
-        <label>
-          Email:
-          <input type="email" name="email" value={formData.email} onChange={handleChange} />
         </label>
         <label>
           Account Type:
