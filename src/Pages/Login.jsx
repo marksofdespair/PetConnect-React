@@ -19,7 +19,7 @@ const Login = () => {
 
       // Assuming login was successful, should redirect the user to another page
       console.log('Login successful', response.data);
-      // Redirect logic here
+      // Redirect logic to go here one day maybe
 
     } catch (error) {
       console.error('Login error:', error);
@@ -59,13 +59,13 @@ const Login = () => {
             value={accountType} 
             onChange={(e) => setAccountType(e.target.value)}
           >
-            <option value="regular">Pet Parent</option>
-            <option value="provider">Service Provider</option>
+            <option value="Owner">Owner</option>
+            <option value="Provider">Service Provider</option>
           </select>
         </div>
             <button type="submit">Login</button>
         <br />
-        No account? <Link to="/CreateAccount">Create one</Link>.
+        No account? <Link to="/RegisterForm">Create one</Link>.
       </form>
     </div>
   );

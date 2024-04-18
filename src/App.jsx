@@ -12,7 +12,7 @@ import AddCat from './Pages/User/AddCat';
 import AddDog from './Pages/User/AddDog';
 import Settings from './Pages/Provider/Settings';
 import AboutUs from './Pages/AboutUs';
-import CreateAccount from './Pages/CreateAccount';
+import RegisterForm from './Pages/RegisterForm';
 import Profile from './Pages/Profile';
 import ProviderProfile from './Pages/Provider/ProviderProfile';
 import ProviderProfileView from './Pages/User/ProviderProfileView';
@@ -36,7 +36,7 @@ const App = () => {
             <Route path="/Settings" element={<Settings />} /> {/* Route for Provider Settings */}
             <Route path="/UserSettings" element={<UserSettings />} /> {/* Route for User Settings */}
             <Route path="/AboutUs" element={<AboutUs />} /> {/* Route for AddService */}
-            <Route path="/CreateAccount" element={<CreateAccount />} /> {/* Route for CreateAccount */}
+            <Route path="/RegisterForm" element={<RegisterForm />} /> {/* Route for RegisterForm */}
             <Route path="/ProviderProfile" element={<ProviderProfile />} /> {/* Route for ProviderProfile */}
             <Route path="/ProviderProfileView" element={<ProviderProfileView />} /> {/* Route for ProviderProfileView */}
             <Route path="/UserProfile" element={<UserProfile />} /> {/* Route for UserProfile */}
