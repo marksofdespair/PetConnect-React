@@ -3,6 +3,7 @@ import axios from 'axios';
 
 const RegisterForm = () => {
   const [formData, setFormData] = useState({
+    username: '',
     name: '',
     email: '',
     password: '', // Add password field
@@ -40,6 +41,10 @@ const RegisterForm = () => {
       <h2>Registration Form</h2>
       {error && <div style={{ color: 'red' }}>{error}</div>}
       <form onSubmit={handleSubmit}>
+        <label>
+          Username:
+          <input type="text" name="username" value={formData.username} onChange={handleChange} />
+        </label>
         <label>
           Name:
           <input type="text" name="name" value={formData.name} onChange={handleChange} />
