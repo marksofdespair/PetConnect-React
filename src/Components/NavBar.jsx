@@ -15,6 +15,8 @@ export function NavBar() {
 
         <Link to="/AboutUs">About Us</Link>
 
+        <Link to="/LogoutPage">Logout</Link>
+
     </ul>
   );
 }

@@ -20,6 +20,7 @@ import UserProfile from './Pages/User/UserProfile';
 import UserSettings from './Pages/User/UserSettings';
 import './App.css';
 import './Layout';
+import LogoutPage from './Pages/LogoutPage';
 
 const App = () => {
   return (
@@ -45,6 +46,7 @@ const App = () => {
             <Route path="/AddCat" element={<AddCat />} /> {/* Route for AddCat */}
             <Route path="/AddDog" element={<AddDog />} /> {/* Route for AddDog */}
             <Route path="/AddPet" element={<AddPet />} /> {/* Route for AddPet */}
+            <Route path="/LogoutPage" element={<LogoutPage />} /> {/* Route for LogoutPage */}
           </Route>
         </Routes>
       </Router>
