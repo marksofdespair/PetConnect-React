@@ -21,6 +21,7 @@ import UserSettings from './Pages/User/UserSettings';
 import './App.css';
 import './Layout';
 import LogoutPage from './Pages/LogoutPage';
+import WelcomeBack from './Pages/WelcomeBack';
 
 const App = () => {
   return (
@@ -47,6 +48,7 @@ const App = () => {
             <Route path="/AddDog" element={<AddDog />} /> {/* Route for AddDog */}
             <Route path="/AddPet" element={<AddPet />} /> {/* Route for AddPet */}
             <Route path="/LogoutPage" element={<LogoutPage />} /> {/* Route for LogoutPage */}
+            <Route path="/WelcomeBack" element = {<WelcomeBack />} /> {/* Route for WelcomeBack*/}
           </Route>
         </Routes>
       </Router>

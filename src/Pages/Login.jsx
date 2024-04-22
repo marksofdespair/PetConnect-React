@@ -1,35 +1,43 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
-const handleSubmit = async (event) => {
-  event.preventDefault();
+const Login = () => {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [accountType, setAccountType] = useState('Owner');
+  const navigate = useNavigate();
 
-  // Log the request payload before making the POST request
-  console.log('Request Payload:', {
-    username,
-    password,
-    accountType,
-  });
+  const handleSubmit = async (event) => {
+    event.preventDefault();
 
-  try {
-    const response = await axios.post('http://localhost:8080/api/login', {
+    // Log the request payload before making the POST request
+    console.log('Request Payload:', {
       username,
       password,
       accountType,
     });
 
-    // Assuming login was successful, should redirect the user to another page
-    console.log('Login successful', response.data);
-    // Redirect logic to go here one day maybe
+    try {
+      const response = await axios.post('http://localhost:8080/api/login', {
+        username,
+        password,
+        accountType,
+      });
 
-  } catch (error) {
-    console.error('Login error:', error);
-    // Handle login error, ex, display error message to user
-  }
+      console.log('Login successful', response.data);
+      navigate('/WelcomeBack'); // Redirects to welcome back page if login succesful
 
-  // Add a return statement here to prevent default behavior
-
+    } catch (error) {
+      console.error('Login error:', error);
+      // Handle login error, display error message to user
+      if (error.response && error.response.data && error.response.data.message) {
+        alert(`Login failed: ${error.response.data.message}`);
+      } else {
+        alert('Login failed. Please try again later.');
+      }
+    }
+  };
 
   return (
     <div>
@@ -64,10 +72,10 @@ const handleSubmit = async (event) => {
             onChange={(e) => setAccountType(e.target.value)}
           >
             <option value="Owner">Owner</option>
-            <option value="Provider">Service Provider</option>
+            <option value="Provider">Provider</option>
           </select>
         </div>
-            <button type="submit">Login</button>
+        <button type="submit">Login</button>
         <br />
         No account? <Link to="/RegisterForm">Create one</Link>.
       </form>
