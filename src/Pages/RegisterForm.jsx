@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom'; // Import Link from react-router-dom
 import axios from 'axios';
 
 const RegisterForm = () => {
@@ -6,11 +7,12 @@ const RegisterForm = () => {
     username: '',
     name: '',
     email: '',
-    password: '', // Add password field
+    password: '',
     verifyPassword: '',
     accountType: '',
   });
   const [error, setError] = useState('');
+  const [registrationSuccess, setRegistrationSuccess] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -24,7 +26,7 @@ const RegisterForm = () => {
       const response = await axios.post('http://localhost:8080/api/register', formData);
 
       console.log('Registration successful:', response.data);
-      // Redirect logic here
+      setRegistrationSuccess(true);
 
     } catch (error) {
       console.error('Registration error:', error.response);
@@ -39,38 +41,46 @@ const RegisterForm = () => {
   return (
     <div>
       <h2>Registration Form</h2>
-      {error && <div style={{ color: 'red' }}>{error}</div>}
-      <form onSubmit={handleSubmit}>
-        <label>
-          Username:
-          <input type="text" name="username" value={formData.username} onChange={handleChange} />
-        </label>
-        <label>
-          Name:
-          <input type="text" name="name" value={formData.name} onChange={handleChange} />
-        </label>
-        <label>
-          Email:
-          <input type="email" name="email" value={formData.email} onChange={handleChange} />
-        </label>
-        <label>
-          Password:
-          <input type="password" name="password" value={formData.password} onChange={handleChange} />
-        </label>
-        <label>
-          Verify Password:
-          <input type="password" name="verifyPassword" value={formData.verifyPassword} onChange={handleChange} />
-        </label>
-        <label>
-          Account Type:
-          <select name="accountType" value={formData.accountType} onChange={handleChange}>
-            <option value="">Select Account Type</option>
-            <option value="Owner">Owner</option>
-            <option value="Provider">Provider</option>
-          </select>
-        </label>
-        <button type="submit">Register</button>
-      </form>
+      {registrationSuccess ? (
+        <div style={{ color: 'green' }}>
+          Registration successful! <Link to="/login">Log in?</Link> {/* Use Link component from react-router-dom */}
+        </div>
+      ) : (
+        <>
+          {error && <div style={{ color: 'red' }}>{error}</div>}
+          <form onSubmit={handleSubmit}>
+            <label>
+              Username:
+              <input type="text" name="username" value={formData.username} onChange={handleChange} />
+            </label>
+            <label>
+              Name:
+              <input type="text" name="name" value={formData.name} onChange={handleChange} />
+            </label>
+            <label>
+              Email:
+              <input type="email" name="email" value={formData.email} onChange={handleChange} />
+            </label>
+            <label>
+              Password:
+              <input type="password" name="password" value={formData.password} onChange={handleChange} />
+            </label>
+            <label>
+              Verify Password:
+              <input type="password" name="verifyPassword" value={formData.verifyPassword} onChange={handleChange} />
+            </label>
+            <label>
+              Account Type:
+              <select name="accountType" value={formData.accountType} onChange={handleChange}>
+                <option value="">Select Account Type</option>
+                <option value="Owner">Owner</option>
+                <option value="Provider">Provider</option>
+              </select>
+            </label>
+            <button type="submit">Register</button>
+          </form>
+        </>
+      )}
     </div>
   );
 };
