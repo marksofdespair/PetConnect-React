@@ -2,30 +2,34 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 
-const Login = () => {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const [accountType, setAccountType] = useState('regular');
+const handleSubmit = async (event) => {
+  event.preventDefault();
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
+  // Log the request payload before making the POST request
+  console.log('Request Payload:', {
+    username,
+    password,
+    accountType,
+  });
 
-    try {
-      const response = await axios.post('http://localhost:8080/api/login', {
-        username,
-        password,
-        accountType,
-      });
+  try {
+    const response = await axios.post('http://localhost:8080/api/login', {
+      username,
+      password,
+      accountType,
+    });
 
-      // Assuming login was successful, should redirect the user to another page
-      console.log('Login successful', response.data);
-      // Redirect logic to go here one day maybe
+    // Assuming login was successful, should redirect the user to another page
+    console.log('Login successful', response.data);
+    // Redirect logic to go here one day maybe
 
-    } catch (error) {
-      console.error('Login error:', error);
-      // Handle login error, ex, display error message to user
-    }
-  };
+  } catch (error) {
+    console.error('Login error:', error);
+    // Handle login error, ex, display error message to user
+  }
+
+  // Add a return statement here to prevent default behavior
+
 
   return (
     <div>
