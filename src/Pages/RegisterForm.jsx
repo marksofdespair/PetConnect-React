@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom'; // Import Link from react-router-dom
+import { Link } from 'react-router-dom'; 
 import axios from 'axios';
 
 const RegisterForm = () => {
@@ -43,7 +43,7 @@ const RegisterForm = () => {
       <h2>Registration Form</h2>
       {registrationSuccess ? (
         <div style={{ color: 'green' }}>
-          Registration successful! <Link to="/login">Log in?</Link> {/* Use Link component from react-router-dom */}
+          Registration successful! <Link to="/login">Log in?</Link> 
         </div>
       ) : (
         <>
