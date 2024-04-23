@@ -6,6 +6,7 @@ const RegisterForm = () => {
   const [formData, setFormData] = useState({
     username: '',
     name: '',
+    zipcode: '',
     email: '',
     password: '',
     verifyPassword: '',
