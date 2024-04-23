@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom'; 
 
 const ReviewsComponent = () => {
   // State to store the reviews
@@ -20,6 +21,21 @@ const ReviewsComponent = () => {
     fetchReviews();
   }, []); // Empty dependency array to run effect only once
 
+  const navigate = useNavigate();
+
+  // Function to handle click event on username
+  const handleClick = async (username) => {
+    try {
+      // Fetch user details based on username
+      const userDetails = await fetchUserDetailsByUsername(username);
+
+      // Navigate to the user profile page
+      navigate(`/user/${username}`);
+    } catch (error) {
+      console.error('Error fetching user details:', error);
+    }
+  };
+
   return (
     <div>
       <h2>Provider Reviews</h2>
@@ -30,7 +46,7 @@ const ReviewsComponent = () => {
           {reviews.map((review) => (
             <li key={review.id}>
               <strong>Rating:</strong> {review.rating}, <strong>Comment:</strong>{' '}
-              {review.comment}
+              <span onClick={() => handleClick(review.username)}>{review.username}</span>
             </li>
           ))}
         </ul>
