@@ -58,6 +58,10 @@ const RegisterForm = () => {
               <input type="text" name="name" value={formData.name} onChange={handleChange} />
             </label>
             <label>
+              ZIP Code:
+              <input type="text" name="zipcode" value={formData.zipcode} onChange={handleChange} />
+            </label>
+            <label>
               Email:
               <input type="email" name="email" value={formData.email} onChange={handleChange} />
             </label>
