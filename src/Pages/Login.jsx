@@ -28,7 +28,9 @@ const Login = () => {
       console.log('Login successful', response.data);
       
       localStorage.setItem("token",JSON.stringify(response.data))
-      console.log(JSON.parse(localStorage.getItem('token')).userId)
+      console.log(JSON.parse(localStorage.getItem('token')))
+      
+      localStorage.setItem('username',JSON.stringify(username))
       
       navigate('/WelcomeBack'); // Redirects to welcome back page if login succesful
 
