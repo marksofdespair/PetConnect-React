@@ -15,7 +15,6 @@ import AboutUs from './Pages/AboutUs';
 import RegisterForm from './Pages/RegisterForm';
 import Profile from './Pages/Profile';
 import ProviderProfile from './Pages/Provider/ProviderProfile';
-import ProviderProfileView from './Pages/User/ProviderProfileView';
 import UserProfile from './Pages/User/UserProfile';
 import UserSettings from './Pages/User/UserSettings';
 import './App.css';
@@ -40,7 +39,6 @@ const App = () => {
             <Route path="/AboutUs" element={<AboutUs />} /> {/* Route for AddService */}
             <Route path="/RegisterForm" element={<RegisterForm />} /> {/* Route for RegisterForm */}
             <Route path="/ProviderProfile" element={<ProviderProfile />} /> {/* Route for ProviderProfile */}
-            <Route path="/ProviderProfileView" element={<ProviderProfileView />} /> {/* Route for ProviderProfileView */}
             <Route path="/UserProfile" element={<UserProfile />} /> {/* Route for UserProfile */}
             <Route path="/Profile" element={<Profile />} /> {/* Route for Profile */}
             <Route path="/Pets" element={<Pets />} /> {/* Route for Pets */}

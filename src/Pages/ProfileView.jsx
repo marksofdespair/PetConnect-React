@@ -51,7 +51,7 @@ const ProfileView = ({ accountType }) => {
         </div>
       )}
 
-      {/* Display skills for owners */}
+      {/* Display skills for providers */}
       {accountType === 'provider' && (
         <div>
           <h3>Skills:</h3>
@@ -60,6 +60,15 @@ const ProfileView = ({ accountType }) => {
               <li key={index}>{skill}</li>
             ))}
           </ul>
+        </div>
+      )}
+
+      {/* Display pets for owners */}
+      {accountType === 'owner' && (
+        <div>
+          <h3>Pets:</h3>
+            {/* Display pets for owners */}
+            {accountType === 'owner' && <PetsComponent ownerId={ownerId} />}
         </div>
       )}
 
