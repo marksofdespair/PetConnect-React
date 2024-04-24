@@ -1,14 +1,19 @@
 import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import ReviewsComponent from '../Components/ReviewsComponent';
 
 const ProfileView = ({ accountType }) => {
   const [userData, setUserData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
 
+  // Get userId from URL parameters
+  const { userId } = useParams();
+
   useEffect(() => {
     const fetchUserData = async () => {
       try {
-        const response = await fetch('http://localhost:8080/api/profile');
+        const response = await fetch(`http://localhost:8080/api/profile/${userId}`);
         if (!response.ok) {
           throw new Error('Failed to fetch data');
         }
@@ -22,7 +27,7 @@ const ProfileView = ({ accountType }) => {
     };
 
     fetchUserData();
-  }, []);
+  }, [userId]); // Add userId to the dependency array to re-fetch data when it changes
 
   if (isLoading) {
     return <div>Loading...</div>;
@@ -33,55 +38,30 @@ const ProfileView = ({ accountType }) => {
   }
 
   // Destructure user data
-  const { name, icon, titles, reviews, skills } = userData;
+  const { name, username, accountType: userType, pets, reviews } = userData;
 
   return (
     <div className="User-profile">
-      {/* Display user icon */}
-      <img src={icon} alt={name} />
+      <h2>User Profile</h2>
+      <p>Name: {name}</p>
+      <p>Username: {username}</p>
+      <p>Account Type: {userType}</p>
 
-      {/* Display user name */}
-      <h2>{name}</h2>
-
-      {/* Display titles/training for providers */}
-      {accountType === 'provider' && (
+      {/* Conditionally render pets if accountType is Owner */}
+      {accountType === 'Owner' && (
         <div>
-          <h3>Titles/Training:</h3>
-          <p>{titles}</p>
-        </div>
-      )}
-
-      {/* Display skills for providers */}
-      {accountType === 'provider' && (
-        <div>
-          <h3>Skills:</h3>
+          <h3>Pets</h3>
           <ul>
-            {skills.map((skill, index) => (
-              <li key={index}>{skill}</li>
+            {pets.map((pet, index) => (
+              <li key={index}>
+                <p>Name: {pet.name}</p>
+                <p>Species: {pet.species}</p>
+                <p>Breed: {pet.breed}</p>
+              </li>
             ))}
           </ul>
         </div>
       )}
-
-      {/* Display pets for owners */}
-      {accountType === 'owner' && (
-        <div>
-          <h3>Pets:</h3>
-            {/* Display pets for owners */}
-            {accountType === 'owner' && <PetsComponent ownerId={ownerId} />}
-        </div>
-      )}
-
-      {/* Display Reviews feature for both */}
-      <div>
-        <h3>Reviews:</h3>
-        {reviews.map((review, index) => (
-          <div key={index}>
-            <p>{review.comment}</p>
-            <p>Rating: {review.rating}</p>
-          </div>
-        ))}
-      </div>
     </div>
   );
 };

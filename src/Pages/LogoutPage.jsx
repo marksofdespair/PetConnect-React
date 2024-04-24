@@ -5,18 +5,20 @@ const LogoutPage = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Perform logout logic here, such as clearing session storage or sending a logout request to the backend
-    // If we decide to use session storage to store login state, we can clear it like this:
-    sessionStorage.removeItem('isLoggedIn');
+    // Perform logout logic here
+    // Remove items from local storage
+    localStorage.removeItem('token');
+    localStorage.removeItem('username');
+    localStorage.removeItem('accountType');
 
     // Redirect the user to the homepage after logging out
-    navigate.push('/');
+    navigate('/'); 
   }, [navigate]);
 
   return (
     <div>
       <h1>Logging Out...</h1>
-      {/* We can optionally display a message to users showing that they are being logged out */}
+      {/* Optionally, you can display a message to users indicating that they are being logged out */}
     </div>
   );
 };

@@ -11,13 +11,6 @@ const Login = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    // Log the request payload before making the POST request
-    console.log('Request Payload:', {
-      username,
-      password,
-      accountType,
-    });
-
     try {
       const response = await axios.post('http://localhost:8080/api/login', {
         username,
@@ -25,15 +18,19 @@ const Login = () => {
         accountType,
       });
 
-      console.log('Login successful', response.data);
-      
-      localStorage.setItem("token",JSON.stringify(response.data))
-      console.log(JSON.parse(localStorage.getItem('token')))
-      
-      localStorage.setItem('username',JSON.stringify(username))
-      
-      navigate('/WelcomeBack'); // Redirects to welcome back page if login succesful
+      // Extract token from response data
+      const token = response.data.token;
 
+      // Store token and accountType in local storage
+      localStorage.setItem('token', JSON.stringify(token));
+      localStorage.setItem('accountType', JSON.stringify(accountType));
+      localStorage.setItem('username', JSON.stringify(username));
+
+      console.log('Login successful', response.data);
+      console.log('Token:', token);
+      console.log('Account Type:', accountType);
+
+      navigate('/WelcomeBack'); // Redirects to welcome back page if login successful
     } catch (error) {
       console.error('Login error:', error);
       // Handle login error, display error message to user

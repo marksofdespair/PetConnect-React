@@ -1,9 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
 
 const Settings = () => {
-  const [profilePicture, setProfilePicture] = useState('');
+  const [accountType, setAccountType] = useState('');
   const [name, setName] = useState('');
   const [titles, setTitles] = useState('');
   const [about, setAbout] = useState('');
@@ -11,9 +10,13 @@ const Settings = () => {
   const [email, setEmail] = useState('');
   const [publicEmail, setPublicEmail] = useState('');
 
-  const handleProfilePictureChange = (event) => {
-    setProfilePicture(event.target.value);
-  };
+  useEffect(() => {
+    // Retrieve account type from local storage
+    const storedAccountType = localStorage.getItem('accountType');
+    if (storedAccountType) {
+      setAccountType(storedAccountType);
+    }
+  }, []);
 
   const handleNameChange = (event) => {
     setName(event.target.value);
@@ -41,51 +44,52 @@ const Settings = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // More submit form data and stuff
     console.log('Form submitted!');
   };
 
   return (
     <div>
       <h2>Settings</h2>
-      <form onSubmit={handleSubmit}>
-        <label>
-          Profile Picture:
-          <input type="file" accept="image/*" onChange={handleProfilePictureChange} />
-        </label>
-        <br />
-        <label>
-          Name:
-          <input type="text" value={name} onChange={handleNameChange} />
-        </label>
-        <br />
-        <label>
-          Titles:
-          <input type="text" value={titles} onChange={handleTitlesChange} />
-        </label>
-        <br />
-        <label>
-          About:
-          <textarea value={about} onChange={handleAboutChange} />
-        </label>
-        <br />
-        <label>
-          Password:
-          <input type="password" value={password} onChange={handlePasswordChange} />
-        </label>
-        <br />
-        <label>
-          Email:
-          <input type="email" value={email} onChange={handleEmailChange} />
-        </label>
-        <br />
-        <label>
-          Public Email:
-          <input type="email" value={publicEmail} onChange={handlePublicEmailChange} />
-        </label>
-        <br />
-        <button type="submit">Save Changes</button>
-      </form>
+      {accountType === '"Provider"' && (
+        <div>
+          <label>
+            Profile Picture:
+            <input type="file" accept="image/*" />
+          </label>
+          <br />
+          <label>
+            Name:
+            <input type="text" value={name} onChange={handleNameChange} />
+          </label>
+          <br />
+          <label>
+            Titles:
+            <input type="text" value={titles} onChange={handleTitlesChange} />
+          </label>
+          <br />
+          <label>
+            About:
+            <textarea value={about} onChange={handleAboutChange} />
+          </label>
+        </div>
+      )}
+              <div>
+          <label>
+            Password:
+            <input type="password" value={password} onChange={handlePasswordChange} />
+          </label>
+          <br />
+          <label>
+            Email:
+            <input type="email" value={email} onChange={handleEmailChange} />
+          </label>
+          <br />
+          <label>
+            Public Email:
+            <input type="email" value={publicEmail} onChange={handlePublicEmailChange} />
+          </label>
+        </div>
+      <button type="submit" onClick={handleSubmit}>Save Changes</button>
       <br />
       <Link to="/userhome">Go Back</Link>
     </div>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import { Layout } from './Layout';
 import Home from './Pages/Home';
@@ -13,7 +13,7 @@ import AddDog from './Pages/User/AddDog';
 import Settings from './Pages/Provider/Settings';
 import AboutUs from './Pages/AboutUs';
 import RegisterForm from './Pages/RegisterForm';
-import Profile from './Pages/Profile';
+import Profile from './Pages/SettingsRoute';
 import ProviderProfile from './Pages/Provider/ProviderProfile';
 import UserProfile from './Pages/User/UserProfile';
 import UserSettings from './Pages/User/UserSettings';
@@ -21,8 +21,33 @@ import './App.css';
 import './Layout';
 import LogoutPage from './Pages/LogoutPage';
 import WelcomeBack from './Pages/WelcomeBack';
+import ProfileView from './Pages/ProfileView';
+import axios from 'axios';
+import SettingsRoute from './Pages/SettingsRoute';
+
 
 const App = () => {
+  useEffect(() => {
+    // Set up Axios interceptors
+    const requestInterceptor = axios.interceptors.request.use(
+      (config) => {
+        const token = localStorage.getItem('token');
+        if (token) {
+          config.headers.Authorization = `Bearer ${token}`;
+        }
+        return config;
+      },
+      (error) => {
+        return Promise.reject(error);
+      }
+    );
+
+    return () => {
+      // Clean up interceptors when component unmounts
+      axios.interceptors.request.eject(requestInterceptor);
+    };
+  }, []); // Run only once when the component mounts
+
   return (
     <div>
       <Router>
@@ -47,6 +72,9 @@ const App = () => {
             <Route path="/AddPet" element={<AddPet />} /> {/* Route for AddPet */}
             <Route path="/LogoutPage" element={<LogoutPage />} /> {/* Route for LogoutPage */}
             <Route path="/WelcomeBack" element = {<WelcomeBack />} /> {/* Route for WelcomeBack*/}
+            <Route path="/SettingsRoute" element = {<WelcomeBack />} /> {/* Route for WelcomeBack*/}
+            <Route path="/ProfileView" element={<ProfileView />} />
+            <Route path="/SettingsRoute" element={<SettingsRoute />} />
           </Route>
         </Routes>
       </Router>

@@ -2,37 +2,35 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom'; 
 
-const ReviewsComponent = () => {
+const ReviewsComponent = ({ providerId }) => {
   // State to store the reviews
   const [reviews, setReviews] = useState([]);
 
   // Function to fetch reviews from the backend API
   const fetchReviews = async () => {
     try {
-      const response = await axios.get('/api/provider-reviews');
+      const response = await axios.get(`/api/provider-reviews/provider/${providerId}`);
       setReviews(response.data);
     } catch (error) {
-      console.error('Error fetching reviews:', error);
+      setError(error.message);
     }
   };
+  
 
   // useEffect (hook) to fetch reviews when the component mounts
   useEffect(() => {
     fetchReviews();
-  }, []); // Empty dependency array to run effect only once
+  }, [providerId]); // Re-fetch reviews when providerId changes
 
   const navigate = useNavigate();
 
   // Function to handle click event on username
-  const handleClick = async (username) => {
+  const handleClick = async (userId) => {
     try {
-      // Fetch user details based on username
-      const userDetails = await fetchUserDetailsByUsername(username);
-
       // Navigate to the user profile page
-      navigate(`/user/${username}`);
+      navigate(`/user/${userId}`);
     } catch (error) {
-      console.error('Error fetching user details:', error);
+      console.error('Error navigating to user profile:', error);
     }
   };
 
@@ -44,9 +42,9 @@ const ReviewsComponent = () => {
       ) : (
         <ul>
           {reviews.map((review) => (
-            <li key={review.id}>
+            <li key={review.reviewid}>
               <strong>Rating:</strong> {review.rating}, <strong>Comment:</strong>{' '}
-              <span onClick={() => handleClick(review.username)}>{review.username}</span>
+              <span onClick={() => handleClick(review.user.id)}>{review.user.name}</span>
             </li>
           ))}
         </ul>
