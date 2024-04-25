@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import ReviewsComponent from '../Components/ReviewsComponent';
 
 const Profile = ({ accountType }) => {
@@ -6,21 +7,13 @@ const Profile = ({ accountType }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
 
+  // Get userId from URL parameters
+  const { userId } = useParams();
+
   useEffect(() => {
     const fetchUserData = async () => {
-      // Retrieve username from local storage
-      let storedUsername = localStorage.getItem("username");
-      if (!storedUsername) {
-        setError('Username not found in local storage');
-        setIsLoading(false);
-        return;
-      }
-  
-      // Remove quotes from the username if present
-      storedUsername = storedUsername.replace(/['"]+/g, '');
-  
       try {
-        const response = await fetch(`http://localhost:8080/api/profile/${storedUsername}`);
+        const response = await fetch(`http://localhost:8080/api/profile/${userId}`);
         if (!response.ok) {
           throw new Error('Failed to fetch data');
         }
@@ -32,20 +25,16 @@ const Profile = ({ accountType }) => {
         setIsLoading(false);
       }
     };
-  
+
     fetchUserData();
-  }, []);
-  
+  }, [userId]); // Add userId to the dependency array to re-fetch data when it changes
+
   if (isLoading) {
     return <div>Loading...</div>;
   }
 
   if (error) {
     return <div>Error: {error}</div>;
-  }
-
-  if (!userData) {
-    return <div>No user data found</div>;
   }
 
   // Destructure user data
@@ -59,7 +48,7 @@ const Profile = ({ accountType }) => {
       <p>Account Type: {userType}</p>
   
       {/* Conditionally render pets if accountType is Owner */}
-      {accountType === "Owner" && (
+      {accountType === "Owner " && (
         <div>
           <h3>Pets</h3>
           <ul>
