@@ -13,18 +13,14 @@ import AddDog from './Pages/User/AddDog';
 import Settings from './Pages/Provider/Settings';
 import AboutUs from './Pages/AboutUs';
 import RegisterForm from './Pages/RegisterForm';
-import Profile from './Pages/SettingsRoute';
 import ProviderProfile from './Pages/Provider/ProviderProfile';
 import UserProfile from './Pages/User/UserProfile';
-import UserSettings from './Pages/User/UserSettings';
 import './App.css';
 import './Layout';
 import LogoutPage from './Pages/LogoutPage';
 import WelcomeBack from './Pages/WelcomeBack';
 import ProfileView from './Pages/ProfileView';
 import axios from 'axios';
-import SettingsRoute from './Pages/SettingsRoute';
-
 
 const App = () => {
   useEffect(() => {
@@ -60,21 +56,17 @@ const App = () => {
             <Route path="/AddService" element={<AddService />} /> {/* Route for AddService */}
             <Route path="/AddPet" element={<AddPet />} /> {/* Route for AddPet */}
             <Route path="/Settings" element={<Settings />} /> {/* Route for Provider Settings */}
-            <Route path="/UserSettings" element={<UserSettings />} /> {/* Route for User Settings */}
             <Route path="/AboutUs" element={<AboutUs />} /> {/* Route for AddService */}
             <Route path="/RegisterForm" element={<RegisterForm />} /> {/* Route for RegisterForm */}
             <Route path="/ProviderProfile" element={<ProviderProfile />} /> {/* Route for ProviderProfile */}
             <Route path="/UserProfile" element={<UserProfile />} /> {/* Route for UserProfile */}
-            <Route path="/Profile" element={<Profile />} /> {/* Route for Profile */}
             <Route path="/Pets" element={<Pets />} /> {/* Route for Pets */}
             <Route path="/AddCat" element={<AddCat />} /> {/* Route for AddCat */}
             <Route path="/AddDog" element={<AddDog />} /> {/* Route for AddDog */}
             <Route path="/AddPet" element={<AddPet />} /> {/* Route for AddPet */}
             <Route path="/LogoutPage" element={<LogoutPage />} /> {/* Route for LogoutPage */}
             <Route path="/WelcomeBack" element = {<WelcomeBack />} /> {/* Route for WelcomeBack*/}
-            <Route path="/SettingsRoute" element = {<WelcomeBack />} /> {/* Route for WelcomeBack*/}
             <Route path="/ProfileView" element={<ProfileView />} />
-            <Route path="/SettingsRoute" element={<SettingsRoute />} />
           </Route>
         </Routes>
       </Router>
