@@ -19,7 +19,6 @@ import LogoutPage from './Pages/LogoutPage';
 import WelcomeBack from './Pages/WelcomeBack';
 
 const App = () => {
-  const isAuthenticated = !!localStorage.getItem('token'); // Check if the user is authenticated
 
   return (
     <div>
@@ -41,11 +40,7 @@ const App = () => {
             <Route path="/AddDog" element={<AddDog />} />
             <Route path="/LogoutPage" element={<LogoutPage />} />
             <Route path="/WelcomeBack" element={<WelcomeBack />} />
-            {isAuthenticated ? (
-              <Route path="/Settings" element={<Settings />} /> 
-            ) : (
-              <Navigate to="/login" />
-            )}
+            <Route path="/Settings" element={<Settings />} /> 
           </Route>
         </Routes>
       </Router>
