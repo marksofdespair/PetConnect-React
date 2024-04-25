@@ -29,7 +29,24 @@ const AddDog = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await axios.post('http://localhost:8080/api/pets/add-dog', { name, breed }); // Update the URL
+      // Retrieve the username from local storage
+      let username = localStorage.getItem('username');
+  
+      // Check if username exists
+      if (!username) {
+        throw new Error('Username not found in local storage');
+      }
+
+      // Remove extra characters from the username
+      username = username.replace(/^"|"$/g, '');
+  
+      // Send the request with the username
+      const response = await axios.post('http://localhost:8080/api/pets/add-dog', {
+        name,
+        breed,
+        username  // Include the username in the request body
+      });
+  
       setSuccessMessage('Dog added successfully!');
       setName('');
       setBreed('');
