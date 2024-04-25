@@ -19,6 +19,8 @@ const AboutUs = () => {
                 <p><h1>The Team</h1></p>
                 <ul style={{ listStyleType: 'none', padding: 0 }}>
                     <li>[Sign Your Name Here!]</li>
+                    <li><a href="https://github.com/wssommerhauser" target="_blank" rel="noopener noreferrer">Will - wssommerhauser</a></li>
+                    <li>[Sign Your Name Here!]</li>
                     <li>[Sign Your Name Here!]</li>
                     <li>[Michael Trapp]</li>
                     <li><a href="https://github.com/marksofdespair" target="_blank" rel="noopener noreferrer">Dia - Marksofdespair</a></li>
