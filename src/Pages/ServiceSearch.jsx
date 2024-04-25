@@ -5,36 +5,95 @@ const ServiceSearch = () => {
   const [searchResults, setSearchResults] = useState([]);
   const [zipCode, setZipCode] = useState('');
   const [distance, setDistance] = useState('');
-  const apiUrl = '/api/services'; // Replace with actual API endpoint
+  const [isGroomer, setIsGroomer] = useState(null);
+  const [isSitter, setIsSitter] = useState(null);
+  const [isTrainer, setIsTrainer] = useState(null);
+  const [isWalker, setIsWalker] = useState(null);
 
   const handleSearch = async () => {
     try {
-      // API Logic holding parking spot, ex axios.get(apiUrl, { params: { zipCode, distance } })
-      console.log(`Searching for providers near zip code ${zipCode} within ${distance} miles.`);
-      // Updates searchResults state based on API response
+      const params = {
+        zipCode,
+        distance,
+        isGroomer,
+        isSitter,
+        isTrainer,
+        isWalker
+      };
+
+      // Send API request with params
+      const response = await axios.get(apiUrl, { params });
+
+      // Update searchResults state based on API response
+      setSearchResults(response.data);
     } catch (error) {
       console.error('Error fetching search results:', error);
       // Sets searchResults to an empty array in case of errors
+      setSearchResults([]);
     }
   };
+
+  const handleCheckboxChange = (e) => {
+    const { name, checked } = e.target;
+    switch(name) {
+      case 'isGroomer':
+        setIsGroomer(checked);
+        break;
+      case 'isSitter':
+        setIsSitter(checked);
+        break;
+      case 'isTrainer':
+        setIsTrainer(checked);
+        break;
+      case 'isWalker':
+        setIsWalker(checked);
+        break;
+      default:
+        break;
+    }
+  }
 
   return (
     <div>
       <h2>Search Page</h2>
       <div>
-        <input type="checkbox" id="skillGrooming" name="isGroomer" value="true" />
+        <input 
+          type="checkbox" 
+          id="skillGrooming" 
+          name="isGroomer" 
+          value="true"
+          onChange={handleCheckboxChange}
+        />
         <label htmlFor="skillGrooming"> Grooming </label>
       </div>
       <div>
-        <input type="checkbox" id="skillSitting" name="isSitter" value="true" />
+        <input 
+          type="checkbox" 
+          id="skillSitting" 
+          name="isSitter" 
+          value="true"
+          onChange={handleCheckboxChange}
+        />
         <label htmlFor="skillSitting"> Pet Sitting </label>
       </div>
       <div>
-        <input type="checkbox" id="skillTraining" name="isTrainer" value="true" />
+        <input 
+          type="checkbox" 
+          id="skillTraining" 
+          name="isTrainer" 
+          value="true"
+          onChange={handleCheckboxChange}
+        />
         <label htmlFor="skillTraining"> Training </label>
       </div>
       <div>
-        <input type="checkbox" id="skillWalking" name="isWalker" value="true" />
+        <input 
+          type="checkbox" 
+          id="skillWalking" 
+          name="isWalker" 
+          value="true"
+          onChange={handleCheckboxChange}
+        />
         <label htmlFor="skillWalking"> Walking </label>
       </div>
       <div>

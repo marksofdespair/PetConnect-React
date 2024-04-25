@@ -14,7 +14,9 @@ const Settings = () => {
     // Retrieve account type from local storage
     const storedAccountType = localStorage.getItem('accountType');
     if (storedAccountType) {
-      setAccountType(storedAccountType);
+      // Remove quotes from account type if present
+      const cleanedAccountType = storedAccountType.replace(/['"]+/g, '');
+      setAccountType(cleanedAccountType);
     }
   }, []);
 
