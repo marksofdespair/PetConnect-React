@@ -20,7 +20,7 @@ const AboutUs = () => {
                 <ul style={{ listStyleType: 'none', padding: 0 }}>
                     <li>[Sign Your Name Here!]</li>
                     <li>[Sign Your Name Here!]</li>
-                    <li>[Sign Your Name Here!]</li>
+                    <li>[Michael Trapp]</li>
                     <li><a href="https://github.com/marksofdespair" target="_blank" rel="noopener noreferrer">Dia - Marksofdespair</a></li>
                 </ul>
         </div>
