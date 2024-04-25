@@ -51,46 +51,52 @@ const Settings = () => {
     <div>
       <h2>Settings</h2>
       {accountType === '"Provider"' && (
-        <div>
-          <label>
-            Profile Picture:
-            <input type="file" accept="image/*" />
-          </label>
-          <br />
-          <label>
-            Name:
-            <input type="text" value={name} onChange={handleNameChange} />
-          </label>
-          <br />
-          <label>
-            Titles:
-            <input type="text" value={titles} onChange={handleTitlesChange} />
-          </label>
-          <br />
-          <label>
-            About:
-            <textarea value={about} onChange={handleAboutChange} />
-          </label>
-        </div>
+        <>
+          <div>
+            <label>
+              Profile Picture:
+              <input type="file" accept="image/*" />
+            </label>
+            <br />
+            <label>
+              Name:
+              <input type="text" value={name} onChange={handleNameChange} />
+            </label>
+            <br />
+            <label>
+              Titles:
+              <input type="text" value={titles} onChange={handleTitlesChange} />
+            </label>
+            <br />
+            <label>
+              About:
+              <textarea value={about} onChange={handleAboutChange} />
+            </label>
+          </div>
+          <div>
+            <label>
+              Password:
+              <input type="password" value={password} onChange={handlePasswordChange} />
+            </label>
+            <br />
+            <label>
+              Email:
+              <input type="email" value={email} onChange={handleEmailChange} />
+            </label>
+            <br />
+            <label>
+              Public Email:
+              <input type="email" value={publicEmail} onChange={handlePublicEmailChange} />
+            </label>
+          </div>
+        </>
       )}
-              <div>
-          <label>
-            Password:
-            <input type="password" value={password} onChange={handlePasswordChange} />
-          </label>
-          <br />
-          <label>
-            Email:
-            <input type="email" value={email} onChange={handleEmailChange} />
-          </label>
-          <br />
-          <label>
-            Public Email:
-            <input type="email" value={publicEmail} onChange={handlePublicEmailChange} />
-          </label>
-        </div>
       <button type="submit" onClick={handleSubmit}>Save Changes</button>
       <br />
+      {accountType === '"Provider"' && (
+        <Link to="/AddService">Add Service</Link>
+      )}
+      <br></br>
       <Link to="/userhome">Go Back</Link>
     </div>
   );
