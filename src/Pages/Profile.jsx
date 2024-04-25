@@ -46,9 +46,9 @@ const Profile = ({ accountType }) => {
       <p>Name: {name}</p>
       <p>Username: {username}</p>
       <p>Account Type: {userType}</p>
-
+  
       {/* Conditionally render pets if accountType is Owner */}
-      {accountType === 'Provider' && (
+      {accountType === "Owner " && (
         <div>
           <h3>Pets</h3>
           <ul>
@@ -62,8 +62,16 @@ const Profile = ({ accountType }) => {
           </ul>
         </div>
       )}
+  
+      {/* Conditionally render reviews */}
+      {userType === "Provider" && (
+        <div>
+          <h3>Reviews</h3>
+          <ReviewsComponent username={username} />
+        </div>
+      )}
     </div>
-  );
-};
+  );  
+}
 
 export default Profile;

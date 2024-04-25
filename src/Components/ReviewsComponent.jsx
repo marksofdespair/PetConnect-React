@@ -2,44 +2,41 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom'; 
 
-const ReviewsComponent = ({ providerId }) => {
-  // State to store the reviews
+const ReviewsComponent = ({ username }) => {
   const [reviews, setReviews] = useState([]);
+  const [error, setError] = useState(null);
+  const navigate = useNavigate();
 
-  // Function to fetch reviews from the backend API
   const fetchReviews = async () => {
     try {
-      const response = await axios.get(`/api/provider-reviews/provider/${providerId}`);
+      const response = await axios.get(`http://localhost:8080/api/provider-reviews/${username}`);
       setReviews(response.data);
     } catch (error) {
       setError(error.message);
     }
   };
-  
 
-  // useEffect (hook) to fetch reviews when the component mounts
   useEffect(() => {
     fetchReviews();
-  }, [providerId]); // Re-fetch reviews when providerId changes
+  }, [username]);
 
-  const navigate = useNavigate();
-
-  // Function to handle click event on username
-  const handleClick = async (userId) => {
+  const handleClick = async (username) => {
     try {
-      // Navigate to the user profile page
-      navigate(`/user/${userId}`);
+      navigate(`/user/${username}`);
     } catch (error) {
       console.error('Error navigating to user profile:', error);
     }
   };
 
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
+
   return (
     <div>
       <h2>Provider Reviews</h2>
-      {reviews.length === 0 ? (
-        <p>No reviews available</p>
-      ) : (
+      <p>Worked with this provider and want to leave a review? Contact petconnectsupport@workmail.com!</p>
+      {Array.isArray(reviews) && reviews.length > 0 ? (
         <ul>
           {reviews.map((review) => (
             <li key={review.reviewid}>
@@ -48,6 +45,8 @@ const ReviewsComponent = ({ providerId }) => {
             </li>
           ))}
         </ul>
+      ) : (
+        <p>No reviews available</p>
       )}
     </div>
   );
