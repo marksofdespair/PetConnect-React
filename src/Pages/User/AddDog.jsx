@@ -28,8 +28,8 @@ const AddDog = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await axios.post('/api/dog-breeds', { name, breed });
-      setSuccessMessage('dog added successfully!');
+      const response = await axios.post('http://localhost:8080/api/pets/add-dog', { name, breed }); // Update the URL
+      setSuccessMessage('Dog added successfully!');
       setName('');
       setBreed('');
     } catch (error) {
