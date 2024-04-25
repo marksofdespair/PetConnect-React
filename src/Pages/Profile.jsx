@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import ReviewsComponent from '../Components/ReviewsComponent';
 
-const ProfileView = ({ accountType }) => {
+const Profile = ({ accountType }) => {
   const [userData, setUserData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -66,4 +66,4 @@ const ProfileView = ({ accountType }) => {
   );
 };
 
-export default ProfileView;
+export default Profile;
