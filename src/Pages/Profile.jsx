@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import ReviewsComponent from '../Components/ReviewsComponent';
 
-const ProfileView = ({ accountType }) => {
+const Profile = ({ accountType }) => {
   const [userData, setUserData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -19,9 +19,9 @@ const ProfileView = ({ accountType }) => {
         }
         const data = await response.json();
         setUserData(data);
-        setIsLoading(false);
       } catch (error) {
         setError(error.message);
+      } finally {
         setIsLoading(false);
       }
     };
@@ -48,7 +48,7 @@ const ProfileView = ({ accountType }) => {
       <p>Account Type: {userType}</p>
 
       {/* Conditionally render pets if accountType is Owner */}
-      {accountType === 'Owner' && (
+      {accountType === 'Provider' && (
         <div>
           <h3>Pets</h3>
           <ul>
@@ -66,4 +66,4 @@ const ProfileView = ({ accountType }) => {
   );
 };
 
-export default ProfileView;
+export default Profile;

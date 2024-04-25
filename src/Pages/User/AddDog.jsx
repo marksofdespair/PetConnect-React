@@ -21,6 +21,7 @@ const AddDog = () => {
 
     fetchBreeds();
   }, []);
+  
 
   // Log the current state of breeds
   console.log('Current breeds state:', breeds);
@@ -35,7 +36,7 @@ const AddDog = () => {
     } catch (error) {
       setErrorMessage('Failed to add dog. Please try again.');
     }
-  };
+  };  
 
   return (
     <div>

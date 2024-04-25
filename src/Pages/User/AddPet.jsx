@@ -6,6 +6,7 @@ function Pets() {
   const [pets, setPets] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [petType, setPetType] = useState('');
 
   useEffect(() => {
     // Fetch pet data from the backend - only update if port or api URL changes.
@@ -20,6 +21,10 @@ function Pets() {
       });
   }, []);
 
+  const handlePetTypeChange = (type) => {
+    setPetType(type);
+  };
+
   if (loading) {
     return <div>Loading...</div>;
   }
@@ -30,10 +35,16 @@ function Pets() {
 
   return (
     <div>
-      <h1>My Pets</h1>
-      <Link to="/AddPet"> {/* Link to the AddPet component */}
-        <button>Add Pet</button> {/* Button to add a new pet */}
-      </Link>
+      <h1>What kind of pet do you have?</h1>
+      <div>
+        <button onClick={() => handlePetTypeChange('dog')}>Dog</button>
+        <button onClick={() => handlePetTypeChange('cat')}>Cat</button>
+      </div>
+      {petType && (
+        <Link to={`/Add${petType.charAt(0).toUpperCase() + petType.slice(1)}`}>
+          <button>Add {petType.charAt(0).toUpperCase() + petType.slice(1)}</button>
+        </Link>
+      )}
       <ul>
         {pets.map(pet => (
           <li key={pet.id}>

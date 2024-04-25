@@ -7,7 +7,7 @@ export function NavBar() {
   return (
     <ul className="navBar">
         <Link to="/">Home</Link>
-        <Link to="/ProfileView">Profile</Link>
+        <Link to="/Profile">Profile</Link>
         <Link to="/Settings">Settings</Link>
         <Link to="/Pets">Pets</Link>
         <Link to="/Services">Search for Services</Link>
