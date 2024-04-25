@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios'; 
 
 function Pets() {
@@ -30,6 +31,9 @@ function Pets() {
   return (
     <div>
       <h1>My Pets</h1>
+      <Link to="/AddPet">
+        <button>Add New</button>
+      </Link>
       <ul>
         {pets.map(pet => (
           <li key={pet.id}>
