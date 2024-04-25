@@ -8,17 +8,31 @@ function Pets() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    // Fetch pet data from the backend - only update if port or api URL changes.
-    axios.get('http://localhost:8080/api/pets') 
-      .then(response => {
+
+    const fetchPets = async () => {
+      try {
+
+        let username = localStorage.getItem('username');
+        // Check if username exists
+        if (!username) {
+          throw new Error('Username not found in local storage');
+        }
+
+        username = username.replace(/^"|"$/g, '');
+
+        const response = await axios.get('http://localhost:8080/api/pets', {
+          username
+        });
         setPets(response.data);
-        setLoading(false);
-      })
-      .catch(error => {
-        setError(error);
-        setLoading(false);
-      });
+      } catch (error) {
+          console.error('Error fetching pets:', error);
+        };
+    }
+
+    fetchPets();
   }, []);
+
+    // Fetch pet data from the backend - only update if port or api URL changes.
 
   if (loading) {
     return <div>Loading...</div>;
