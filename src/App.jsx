@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { Layout } from './Layout';
 import Home from './Pages/Home';
 import Login from './Pages/Login';
@@ -10,69 +10,46 @@ import Pets from './Pages/User/Pets';
 import AddPet from './Pages/User/AddPet';
 import AddCat from './Pages/User/AddCat';
 import AddDog from './Pages/User/AddDog';
-import Settings from './Pages/Provider/Settings';
+import Settings from './Pages/Settings'; // Assuming this is where your Settings component is located
 import AboutUs from './Pages/AboutUs';
 import RegisterForm from './Pages/RegisterForm';
 import ProviderProfile from './Pages/Provider/ProviderProfile';
 import UserProfile from './Pages/User/UserProfile';
-import './App.css';
-import './Layout';
 import LogoutPage from './Pages/LogoutPage';
 import WelcomeBack from './Pages/WelcomeBack';
-import ProfileView from './Pages/ProfileView';
-import axios from 'axios';
 
 const App = () => {
-  useEffect(() => {
-    // Set up Axios interceptors
-    const requestInterceptor = axios.interceptors.request.use(
-      (config) => {
-        const token = localStorage.getItem('token');
-        if (token) {
-          config.headers.Authorization = `Bearer ${token}`;
-        }
-        return config;
-      },
-      (error) => {
-        return Promise.reject(error);
-      }
-    );
-
-    return () => {
-      // Clean up interceptors when component unmounts
-      axios.interceptors.request.eject(requestInterceptor);
-    };
-  }, []); // Run only once when the component mounts
+  const isAuthenticated = !!localStorage.getItem('token'); // Check if the user is authenticated
 
   return (
     <div>
       <Router>
         <Routes>
           <Route element={<Layout/>}> 
-            <Route path="/" element={<Home />} /> {/* Route for Home page/Home */}
-            <Route path="/Login" element={<Login />} /> {/* Route for Login */}
-            <Route path="/UserHome" element={<UserHome />} /> {/* Route for UserHome */}
-            <Route path="/ServiceSearch" element={<ServiceSearch />} /> {/* Route for ServiceSearch */}
-            <Route path="/AddService" element={<AddService />} /> {/* Route for AddService */}
-            <Route path="/AddPet" element={<AddPet />} /> {/* Route for AddPet */}
-            <Route path="/Settings" element={<Settings />} /> {/* Route for Provider Settings */}
-            <Route path="/AboutUs" element={<AboutUs />} /> {/* Route for AddService */}
-            <Route path="/RegisterForm" element={<RegisterForm />} /> {/* Route for RegisterForm */}
-            <Route path="/ProviderProfile" element={<ProviderProfile />} /> {/* Route for ProviderProfile */}
-            <Route path="/UserProfile" element={<UserProfile />} /> {/* Route for UserProfile */}
-            <Route path="/Pets" element={<Pets />} /> {/* Route for Pets */}
-            <Route path="/AddCat" element={<AddCat />} /> {/* Route for AddCat */}
-            <Route path="/AddDog" element={<AddDog />} /> {/* Route for AddDog */}
-            <Route path="/AddPet" element={<AddPet />} /> {/* Route for AddPet */}
-            <Route path="/LogoutPage" element={<LogoutPage />} /> {/* Route for LogoutPage */}
-            <Route path="/WelcomeBack" element = {<WelcomeBack />} /> {/* Route for WelcomeBack*/}
-            <Route path="/ProfileView" element={<ProfileView />} />
+            <Route path="/" element={<Home />} />
+            <Route path="/Login" element={<Login />} />
+            <Route path="/UserHome" element={<UserHome />} />
+            <Route path="/ServiceSearch" element={<ServiceSearch />} />
+            <Route path="/AddService" element={<AddService />} />
+            <Route path="/AddPet" element={<AddPet />} />
+            <Route path="/AboutUs" element={<AboutUs />} />
+            <Route path="/RegisterForm" element={<RegisterForm />} />
+            <Route path="/ProviderProfile" element={<ProviderProfile />} />
+            <Route path="/UserProfile" element={<UserProfile />} />
+            <Route path="/Pets" element={<Pets />} />
+            <Route path="/AddCat" element={<AddCat />} />
+            <Route path="/AddDog" element={<AddDog />} />
+            <Route path="/LogoutPage" element={<LogoutPage />} />
+            <Route path="/WelcomeBack" element={<WelcomeBack />} />
+            {isAuthenticated ? (
+              <Route path="/Settings" element={<Settings />} /> 
+            ) : (
+              <Navigate to="/login" />
+            )}
           </Route>
         </Routes>
       </Router>
-      <br></br>
-      <br></br>
-      <footer>© Team Laika Capstone Project 2024</footer>
+      {/* Footer and other elements */}
     </div>
   );
 };
