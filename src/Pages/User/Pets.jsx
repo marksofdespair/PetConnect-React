@@ -20,6 +20,8 @@ function Pets() {
       try {
 
         let username = localStorage.getItem('username');
+        let token = localStorage.getItem('token');
+
         // Check if username exists
         if (!username) {
           throw new Error('Username not found in local storage');
@@ -28,7 +30,12 @@ function Pets() {
         username = username.replace(/^"|"$/g, '');
 
         const response = await axios.get('http://localhost:8080/api/pets', {
-          username
+          params: { username },
+          headers: {
+            accept: "*/*",
+            "Content-Type": "application/json",
+            Authorization: token,
+          },
         });
         setPets(response.data);
       } catch (error) {
@@ -41,13 +48,13 @@ function Pets() {
 
     // Fetch pet data from the backend - only update if port or api URL changes.
 
-  if (loading) {
-    return <div>Loading...</div>;
-  }
+  // if (loading) {
+  //   return <div>Loading...</div>;
+  // }
   
-  if (error) {
-    return <div>Error: {error.message}</div>;
-  }
+  // if (error) {
+  //   return <div>Error: {error.message}</div>;
+  // }
   
   return (
     <div>
