@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import ReviewsComponent from '../Components/ReviewsComponent';
+import jwtDecode from 'jwt-decode';
 
 const Profile = ({ accountType }) => {
   const [userData, setUserData] = useState(null);
