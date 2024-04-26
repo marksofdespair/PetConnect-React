@@ -42,8 +42,8 @@ function Pets() {
       </div>
       {petType && (
         <Link to={`/Add${petType.charAt(0).toUpperCase() + petType.slice(1)}`}>
-          <button>Add {petType.charAt(0).toUpperCase() + petType.slice(1)}</button>
-        </Link>
+        <button>Add {petType.charAt(0).toUpperCase() + petType.slice(1)}</button>
+        </Link>      
       )}
       <ul>
         {pets.map(pet => (
