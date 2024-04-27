@@ -19,7 +19,7 @@ const Login = () => {
       });
 
       // Extract token from response data
-      const token = response.data.token;
+      const token = response.data;
 
       // Store token and accountType in local storage
       localStorage.setItem('token', JSON.stringify(token));
