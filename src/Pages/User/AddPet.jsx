@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom'; 
-import jwtDecode from 'jwt-decode';
+import * as jwtDecode from 'jwt-decode';
 
 function Pets() {
   const [pets, setPets] = useState([]);
