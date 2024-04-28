@@ -1,20 +1,39 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import ReviewsComponent from '../Components/ReviewsComponent';
-import jwtDecode from 'jwt-decode';
+import {jwtDecode} from 'jwt-decode';
 
 const Profile = ({ accountType }) => {
   const [userData, setUserData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
-
+  
   // Get userId from URL parameters
-  const { userId } = useParams();
+ // const { userId } = useParams();
+
+//   useEffect(()=>{
+//     setuserId(jwtDecode(token).subject)
+//   console.log(userId);
+//   }, [])
+// Console.log(userId);
 
   useEffect(() => {
+
     const fetchUserData = async () => {
+      
       try {
-        const response = await fetch(`http://localhost:8080/api/profile/${userId}`);
+        const response = await axios.fetch(`http://localhost:8080/api/profile`, {
+        
+       //let username = localStorage.getItem('username');
+         //localStorage.getItem('Token');
+
+        headers: {
+            accept: "*/*",
+            "Content-Type": "application/json",
+            Authorization: token,
+          }
+        })
+      
         if (!response.ok) {
           throw new Error('Failed to fetch data');
         }

@@ -1,14 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import jwtDecode from 'jwt-decode';
-
+import * as jwtDecode from 'jwt-decode';
 const AddCat = () => {
   const [name, setName] = useState('');
   const [breed, setBreed] = useState('');
   const [breeds, setBreeds] = useState([]);
   const [successMessage, setSuccessMessage] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
-
   useEffect(() => {
     const fetchBreeds = async () => {
       try {
@@ -19,34 +17,27 @@ const AddCat = () => {
         console.error('Error fetching cat breeds:', error);
       }
     };
-
     fetchBreeds();
   }, []);
-
   // Logs the current state of breeds
   console.log('Current breeds state:', breeds);
-
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
       // Retrieve the username from local storage
       let username = localStorage.getItem('username');
-  
       // Check if username exists
       if (!username) {
         throw new Error('Username not found in local storage');
       }
-
       // Remove extra characters from the username
       username = username.replace(/^"|"$/g, '');
-  
       // Send the request with the username
       const response = await axios.post('http://localhost:8080/api/pets/add-cat', {
         name,
         breed,
         username  // Include the username in the request body
       });
-  
       setSuccessMessage('Cat added successfully!');
       setName('');
       setBreed('');
@@ -54,7 +45,6 @@ const AddCat = () => {
       setErrorMessage('Failed to add cat. Please try again.');
     }
   };
-
   return (
     <div>
       <h1>Tell Us About Your Cat:</h1>
@@ -83,5 +73,4 @@ const AddCat = () => {
     </div>
   );
 };
-
 export default AddCat;
