@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import ReviewsComponent from '../Components/ReviewsComponent';
-import {jwtDecode} from 'jwt-decode';
 import axios from 'axios';
 
 const Profile = ({ accountType }) => {
