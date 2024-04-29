@@ -13,8 +13,6 @@ import AddDog from './Pages/User/AddDog';
 import Settings from './Pages/Settings'; // Assuming this is where your Settings component is located
 import AboutUs from './Pages/AboutUs';
 import RegisterForm from './Pages/RegisterForm';
-import ProviderProfile from './Pages/Provider/ProviderProfile';
-import UserProfile from './Pages/User/UserProfile';
 import LogoutPage from './Pages/LogoutPage';
 import WelcomeBack from './Pages/WelcomeBack';
 import Profile from './Pages/Profile';
@@ -36,10 +34,7 @@ const App = () => {
             <Route path="/AddPet" element={<AddPet />} /> {/* Route for AddPet */}
             <Route path="/Settings" element={<Settings />} /> {/* Route for Provider Settings */}
             <Route path="/AboutUs" element={<AboutUs />} /> {/* Route for AddService */}
-            <Route path="/RegisterForm" element={<RegisterForm />} /> {/* Route for RegisterForm */}
-            <Route path="/ProviderProfile" element={<ProviderProfile />} /> {/* Route for ProviderProfile */}
-            <Route path="/UserProfile" element={<UserProfile />} /> {/* Route for UserProfile */}
-            <Route path="/Profile" element={<Profile />} />
+            <Route path="/RegisterForm" element={<RegisterForm />} /> {/* Route for RegisterForm */}            <Route path="/Profile" element={<Profile />} />
             <Route path="/Pets" element={<Pets />} /> {/* Route for Pets */}
             <Route path="/AddCat" element={<AddCat />} /> {/* Route for AddCat */}
             <Route path="/AddDog" element={<AddDog />} /> {/* Route for AddDog */}
