@@ -57,7 +57,7 @@ let token = localStorage.getItem('Token');
   }
 
   // Destructure user data
-const { name, username, accountType: userType, pets, reviews } = userData;
+const { name, username, email, accountType: userType, pets, reviews } = userData;
 
 
   return (
@@ -65,6 +65,7 @@ const { name, username, accountType: userType, pets, reviews } = userData;
       <h2>User Profile</h2>
       <p>Name: {name}</p>
       <p>Username: {username}</p>
+      <p>Email: {email}</p>
       <p>Account Type: {userType}</p>
   
       {/* Conditionally render pets if accountType is Owner */}
