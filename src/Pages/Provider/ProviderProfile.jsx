@@ -1,18 +1,28 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types'; 
 import axios from 'axios';
 
 const ProviderProfile = ({ provider }) => {
   // Destructure provider object to access properties
-  const { name, icon, titles, reviews } = provider;
-  const [additionalInfo, setAdditionalInfo] = useState('');
-
+  const { name, icon, titles } = provider; //removed reviews
+  let [additionalInfo, setAdditionalInfo] = useState('');
+  let [reviews, setReviews] = useState ([]); //add reviews
   useEffect(() => {
     // Fetch additional info about the provider
     const fetchAdditionalInfo = async () => {
       try {
-        const response = await axios.get(`/api/providers/${name}`); // PLACEHOLDER FOR API URL, REPLACE
-        setAdditionalInfo(response.data.additionalInfo);
+        const response = await axios.get(`/api/services`, {
+          headers: {
+            accept: "*/*",
+            "Content-Type": "application/json",
+            Authorization: token,
+          }
+        });
+          // PLACEHOLDER FOR API URL, REPLACE
+        setAdditionalInfo(response.data);
+        setReviews(response.data) // set reviews
+        console.log(reviews)
+
       } catch (error) {
         console.error('Error fetching additional provider info:', error);
       }
@@ -36,15 +46,15 @@ const ProviderProfile = ({ provider }) => {
       </div>
 
       {/* Modify for Reviews feature */}
-      <div>
+      <div> 
         <h3>Reviews:</h3>
-        {reviews.map((review, index) => (
+       {reviews.map((review, index) => (
           <div key={index}>
             <p>{review.comment}</p>
             <p>Rating: {review.rating}</p>
-          </div>
+          </div> 
         ))}
-      </div>
+      </div> 
       <div>
         <h3>Additional Information:</h3>
         <p>{additionalInfo}</p>

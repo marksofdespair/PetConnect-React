@@ -9,7 +9,7 @@ const ReviewsComponent = ({ providerId }) => {
   // Function to fetch reviews from the backend API
   const fetchReviews = async () => {
     try {
-      const response = await axios.get(`/api/provider-reviews/provider/${providerId}`);
+      const response = await axios.get(`/api/provider-reviews/provider/`);
       setReviews(response.data);
     } catch (error) {
       setError(error.message);

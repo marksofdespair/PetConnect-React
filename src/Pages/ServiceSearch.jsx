@@ -119,7 +119,7 @@ const ServiceSearch = () => {
         <div>
           <h3>Search Results:</h3>
           <ul>
-            {searchResults.map((provider, index) => (
+            {searchResults.map((index) => (
               <li key={index}>{provider.name}</li>
             ))}
           </ul>

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import ReviewsComponent from '../Components/ReviewsComponent';
 import {jwtDecode} from 'jwt-decode';
+import axios from 'axios';
 
 const Profile = ({ accountType }) => {
   const [userData, setUserData] = useState(null);
@@ -11,6 +12,7 @@ const Profile = ({ accountType }) => {
   // Get userId from URL parameters
  // const { userId } = useParams();
 
+let token = localStorage.getItem('Token');
 //   useEffect(()=>{
 //     setuserId(jwtDecode(token).subject)
 //   console.log(userId);
@@ -22,11 +24,8 @@ const Profile = ({ accountType }) => {
     const fetchUserData = async () => {
       
       try {
-        const response = await axios.fetch(`http://localhost:8080/api/profile`, {
-        
-       //let username = localStorage.getItem('username');
-         //localStorage.getItem('Token');
-
+        const response = await axios.get(`http://localhost:8080/api/profile`, {
+               
         headers: {
             accept: "*/*",
             "Content-Type": "application/json",
@@ -34,20 +33,19 @@ const Profile = ({ accountType }) => {
           }
         })
       
-        if (!response.ok) {
-          throw new Error('Failed to fetch data');
-        }
-        const data = await response.json();
-        setUserData(data);
+        // if (!response.ok) {
+        //   throw new Error('Failed to fetch data');
+        // }
+       // const data = await response.json();
+        setUserData(response.data);
       } catch (error) {
         setError(error.message);
       } finally {
         setIsLoading(false);
       }
     };
-
     fetchUserData();
-  }, [userId]); // Add userId to the dependency array to re-fetch data when it changes
+  }); // Add userId to the dependency array to re-fetch data when it changes
 
   if (isLoading) {
     return <div>Loading...</div>;
@@ -58,7 +56,8 @@ const Profile = ({ accountType }) => {
   }
 
   // Destructure user data
-  const { name, username, accountType: userType, pets, reviews } = userData;
+const { name, username, accountType: userType, pets, reviews } = userData;
+
 
   return (
     <div className="User-profile">
@@ -84,13 +83,13 @@ const Profile = ({ accountType }) => {
       )}
   
       {/* Conditionally render reviews */}
-      {userType === "Provider" && (
-        <div>
+      {accountType === "Provider" && (
+      {/*}  <div>
           <h3>Reviews</h3>
           <ReviewsComponent username={username} />
-        </div>
+        </div>*/}
       )}
-    </div>
+    </div> 
   );  
 }
 

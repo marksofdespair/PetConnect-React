@@ -3,13 +3,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import * as jwtDecode from 'jwt-decode';
 
-let username = localStorage.getItem('username');
-// Check if username exists
-if (!username) {
-  throw new Error('Username not found in local storage');
-}
 
-username = username.replace(/^"|"$/g, '');
 function Pets() {
   
   let [pets, setPets] = useState([]);
