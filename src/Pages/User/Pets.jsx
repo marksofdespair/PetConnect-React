@@ -53,7 +53,7 @@ function Pets() {
       <ul>
         {pets.map(pet => (
           <li key={pet.id}>
-            <h2>{pet.name}</h2>
+            <Link to={`/PetInfo/${pet.id}`}><h2>{pet.name}</h2></Link>
             <p>Species: {pet.species}</p>
             <p>Breed: {pet.breed}</p>
           </li>

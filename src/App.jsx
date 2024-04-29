@@ -10,6 +10,8 @@ import Pets from './Pages/User/Pets';
 import AddPet from './Pages/User/AddPet';
 import AddCat from './Pages/User/AddCat';
 import AddDog from './Pages/User/AddDog';
+import DeletePet from './Pages/User/DeletePet';
+import PetInfo from './Pages/User/PetInfo';
 import Settings from './Pages/Settings'; // Assuming this is where your Settings component is located
 import AboutUs from './Pages/AboutUs';
 import RegisterForm from './Pages/RegisterForm';
@@ -34,11 +36,14 @@ const App = () => {
             <Route path="/AddPet" element={<AddPet />} /> {/* Route for AddPet */}
             <Route path="/Settings" element={<Settings />} /> {/* Route for Provider Settings */}
             <Route path="/AboutUs" element={<AboutUs />} /> {/* Route for AddService */}
-            <Route path="/RegisterForm" element={<RegisterForm />} /> {/* Route for RegisterForm */}            <Route path="/Profile" element={<Profile />} />
+            <Route path="/RegisterForm" element={<RegisterForm />} /> {/* Route for RegisterForm */}
+            <Route path="/Profile" element={<Profile />} />
             <Route path="/Pets" element={<Pets />} /> {/* Route for Pets */}
             <Route path="/AddCat" element={<AddCat />} /> {/* Route for AddCat */}
             <Route path="/AddDog" element={<AddDog />} /> {/* Route for AddDog */}
             <Route path="/AddPet" element={<AddPet />} /> {/* Route for AddPet */}
+            <Route path="/DeletePet/:petId" element={<DeletePet />} /> {/* Route for DeletePet */}
+            <Route path="/PetInfo/:petId" element={<PetInfo />} /> {/* Route for PetInfo */}
             <Route path="/LogoutPage" element={<LogoutPage />} /> {/* Route for LogoutPage */}
             <Route path="/WelcomeBack" element = {<WelcomeBack />} /> {/* Route for WelcomeBack*/}
           </Route>
