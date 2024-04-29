@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import {jwtDecode} from 'jwt-decode';
 
 const Settings = () => {
   const [accountType, setAccountType] = useState('');
@@ -14,7 +15,9 @@ const Settings = () => {
     // Retrieve account type from local storage
     const storedAccountType = localStorage.getItem('accountType');
     if (storedAccountType) {
-      setAccountType(storedAccountType);
+      // Remove quotes from account type if present
+      const cleanedAccountType = storedAccountType.replace(/['"]+/g, '');
+      setAccountType(cleanedAccountType);
     }
   }, []);
 

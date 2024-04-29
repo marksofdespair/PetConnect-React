@@ -9,22 +9,30 @@ const ServiceSearch = () => {
   const [isSitter, setIsSitter] = useState(null);
   const [isTrainer, setIsTrainer] = useState(null);
   const [isWalker, setIsWalker] = useState(null);
+<<<<<<< HEAD
 
   let searchResultsParsed = [];
 
   const apiUrl = '/api/services'; // Replace with actual API endpoint
+=======
+>>>>>>> refs/remotes/origin/main
 
   const handleSearch = async (event) => {
     event.preventDefault();
     try {
+<<<<<<< HEAD
 
       const response = await axios.post('http://localhost:8080/api/providers/search', {
+=======
+      const params = {
+>>>>>>> refs/remotes/origin/main
         zipCode,
         distance,
         isGroomer,
         isSitter,
         isTrainer,
         isWalker
+<<<<<<< HEAD
       });
       // API Logic holding parking spot, ex axios.get(apiUrl, { params: { zipCode, distance } })
 
@@ -44,9 +52,19 @@ const ServiceSearch = () => {
 
       console.log(`Searching for providers near zip code ${zipCode} within ${distance} miles.`);
       // Updates searchResults state based on API response
+=======
+      };
+
+      // Send API request with params
+      const response = await axios.get(apiUrl, { params });
+
+      // Update searchResults state based on API response
+      setSearchResults(response.data);
+>>>>>>> refs/remotes/origin/main
     } catch (error) {
       console.error('Error fetching search results:', error);
       // Sets searchResults to an empty array in case of errors
+      setSearchResults([]);
     }
 
   //   for (let i = 0; i < searchResults.length; i++) {
@@ -61,6 +79,7 @@ const ServiceSearch = () => {
 
   };
 
+<<<<<<< HEAD
   // const handleCheckboxChange = (e) => {
   //   const { name, checked } = e.target;
   //   setSelectedSkills((
@@ -75,11 +94,33 @@ const ServiceSearch = () => {
   //       })
   //     );
   // }
+=======
+  const handleCheckboxChange = (e) => {
+    const { name, checked } = e.target;
+    switch(name) {
+      case 'isGroomer':
+        setIsGroomer(checked);
+        break;
+      case 'isSitter':
+        setIsSitter(checked);
+        break;
+      case 'isTrainer':
+        setIsTrainer(checked);
+        break;
+      case 'isWalker':
+        setIsWalker(checked);
+        break;
+      default:
+        break;
+    }
+  }
+>>>>>>> refs/remotes/origin/main
 
   return (
     <div>
       <h2>Search Page</h2>
       <div>
+<<<<<<< HEAD
         <input type="checkbox" id="skillGrooming" name="isGroomer" value="true" onChange={(e) => setIsGroomer(e.target.value)}/>
         <label htmlFor="skillGrooming"> Grooming </label>
       </div>
@@ -93,6 +134,45 @@ const ServiceSearch = () => {
       </div>
       <div>
         <input type="checkbox" id="skillWalking" name="isWalker" value="true" onChange={(e) => setIsWalker(e.target.value)}/>
+=======
+        <input 
+          type="checkbox" 
+          id="skillGrooming" 
+          name="isGroomer" 
+          value="true"
+          onChange={handleCheckboxChange}
+        />
+        <label htmlFor="skillGrooming"> Grooming </label>
+      </div>
+      <div>
+        <input 
+          type="checkbox" 
+          id="skillSitting" 
+          name="isSitter" 
+          value="true"
+          onChange={handleCheckboxChange}
+        />
+        <label htmlFor="skillSitting"> Pet Sitting </label>
+      </div>
+      <div>
+        <input 
+          type="checkbox" 
+          id="skillTraining" 
+          name="isTrainer" 
+          value="true"
+          onChange={handleCheckboxChange}
+        />
+        <label htmlFor="skillTraining"> Training </label>
+      </div>
+      <div>
+        <input 
+          type="checkbox" 
+          id="skillWalking" 
+          name="isWalker" 
+          value="true"
+          onChange={handleCheckboxChange}
+        />
+>>>>>>> refs/remotes/origin/main
         <label htmlFor="skillWalking"> Walking </label>
       </div>
       <div>
@@ -118,6 +198,7 @@ const ServiceSearch = () => {
         <div>
           <h3>Search Results:</h3>
           <ul>
+<<<<<<< HEAD
             {searchResults.map((provider,index) => (
               <li key={index}>
                 <h2>{provider.name}</h2>
@@ -127,6 +208,10 @@ const ServiceSearch = () => {
                 <p>Walker: {provider.walker}</p>
                 <p>Trainer: {provider.trainer}</p>
               </li>
+=======
+            {searchResults.map((index) => (
+              <li key={index}>{provider.name}</li>
+>>>>>>> refs/remotes/origin/main
             ))}
           </ul>
         </div>

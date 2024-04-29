@@ -23,7 +23,7 @@ const WelcomeBack = () => {
     <div style={{ textAlign: 'center', marginTop: '50px' }}>
       <h1>Welcome Back, {username || 'User'}!</h1>
       <p>You have successfully logged in.</p>
-      <p>Feel free to explore our site.</p>
+      <p>Feel free to explore the site.</p>
       <button onClick={handleLogout} style={{ backgroundColor: '#f44336', color: '#fff', border: 'none', padding: '10px 20px', fontSize: '16px', borderRadius: '5px', cursor: 'pointer' }}>Logout</button>
     </div>
   );

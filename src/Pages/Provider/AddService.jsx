@@ -29,21 +29,24 @@ const AddService = () => {
     event.preventDefault();
     try {
       // Should retrieve the token from localStorage
-      const token = JSON.parse(localStorage.getItem('token'));
+      const token = (localStorage.getItem('Token'));
   
       // Should set the authorization header with the token
       const config = {
         headers: {
-          Authorization: `Bearer ${token.accessToken}` // I'm assuming the token structure has an accessToken field
+          accept: "*/*",
+          "Content-Type": "application/json",
+          Authorization: token,
         }
       };
   
-      const response = await axios.post('/api/services', {
+      const response = await axios.post('http://localhost:8080/api/providers/add/service', {
+  
         serviceType,
         certificates,
         yearsExperience,
         notes,
-      }, config);
+    }, config);
 
       console.log('Service added:', response.data);
       // Optionally, we can redirect the user or perform other actions here, like submit report/error contact/etc

@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
+import {jwtDecode} from 'jwt-decode';
 
 const AddDog = () => {
   const [name, setName] = useState('');
@@ -76,6 +78,7 @@ const AddDog = () => {
         </div>
         <div className="form-group">
           <input type="submit" value="Submit" className="btn btn-success" />
+          <Link to="/pets" className="btn btn-secondary">Back to Pets</Link> {/* Button to go back to /pets page */}
         </div>
       </form>
       {successMessage && <div className="alert alert-success">{successMessage}</div>}

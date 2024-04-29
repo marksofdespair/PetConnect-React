@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom'; // Import Link for navigation
+import { Link } from 'react-router-dom'; 
+import {jwtDecode} from 'jwt-decode';
 
 function Pets() {
   const [pets, setPets] = useState([]);
@@ -8,30 +9,30 @@ function Pets() {
   const [error, setError] = useState(null);
   const [petType, setPetType] = useState('');
 
-  useEffect(() => {
-    // Fetch pet data from the backend - only update if port or api URL changes.
-    axios.get('http://localhost:8080/api/pets')
-      .then(response => {
-        setPets(response.data);
-        setLoading(false);
-      })
-      .catch(error => {
-        setError(error);
-        setLoading(false);
-      });
-  }, []);
+  // useEffect(() => {
+  //   // Fetch pet data from the backend - only update if port or api URL changes.
+  //   axios.get('http://localhost:8080/api/pets')
+  //     .then(response => {
+  //       setPets(response.data);
+  //       setLoading(false);
+  //     })
+  //     .catch(error => {
+  //       setError(error);
+  //       setLoading(false);
+  //     });
+  // }, []);
 
   const handlePetTypeChange = (type) => {
     setPetType(type);
   };
 
-  if (loading) {
-    return <div>Loading...</div>;
-  }
+  // if (loading) {
+  //   return <div>Loading...</div>;
+  // }
 
-  if (error) {
-    return <div>Error: {error.message}</div>;
-  }
+  // if (error) {
+  //   return <div>Error: {error.message}</div>;
+  // }
 
   return (
     <div>
