@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 
 const ServiceSearch = () => {
-  const [searchResults, setSearchResults] = useState([]);
+  let [searchResults, setSearchResults] = useState([]);
   const [zipCode, setZipCode] = useState('');
   const [distance, setDistance] = useState('');
   const [isGroomer, setIsGroomer] = useState(null);
@@ -10,90 +10,89 @@ const ServiceSearch = () => {
   const [isTrainer, setIsTrainer] = useState(null);
   const [isWalker, setIsWalker] = useState(null);
 
-  const handleSearch = async () => {
+  let searchResultsParsed = [];
+
+  const apiUrl = '/api/services'; // Replace with actual API endpoint
+
+  const handleSearch = async (event) => {
+    event.preventDefault();
     try {
-      const params = {
+
+      const response = await axios.post('http://localhost:8080/api/providers/search', {
         zipCode,
         distance,
         isGroomer,
         isSitter,
         isTrainer,
         isWalker
-      };
+      });
+      // API Logic holding parking spot, ex axios.get(apiUrl, { params: { zipCode, distance } })
 
-      // Send API request with params
-      const response = await axios.get(apiUrl, { params });
+      // let searchResultsParsed = [];
 
-      // Update searchResults state based on API response
+      // for (let searchResult in response.data) {
+
+      //   let jsonParsed = JSON.parse(searchResult);
+
+      //   searchResultsParsed.push(jsonParsed);
+
+      // }
+
+      // console.log(searchResultsParsed);
+
       setSearchResults(response.data);
+
+      console.log(`Searching for providers near zip code ${zipCode} within ${distance} miles.`);
+      // Updates searchResults state based on API response
     } catch (error) {
       console.error('Error fetching search results:', error);
       // Sets searchResults to an empty array in case of errors
-      setSearchResults([]);
     }
+
+  //   for (let i = 0; i < searchResults.length; i++) {
+
+  //     let jsObject = JSON.parse(String.searchResults[i]);
+
+  //     searchResultsParsed.push(jsObject);
+
+  // }
+
+  // console.log(searchResultsParsed);
+
   };
 
-  const handleCheckboxChange = (e) => {
-    const { name, checked } = e.target;
-    switch(name) {
-      case 'isGroomer':
-        setIsGroomer(checked);
-        break;
-      case 'isSitter':
-        setIsSitter(checked);
-        break;
-      case 'isTrainer':
-        setIsTrainer(checked);
-        break;
-      case 'isWalker':
-        setIsWalker(checked);
-        break;
-      default:
-        break;
-    }
-  }
+  // const handleCheckboxChange = (e) => {
+  //   const { name, checked } = e.target;
+  //   setSelectedSkills((
+  //     isGroomer,
+  //     isSitter,
+  //     isTrainer,
+  //     isWalker) => ({
+  //       isGroomer = "true", [name]: checked,
+  //       isSitter = "true", [name]: checked,
+  //       isTrainer = "true", [name]: checked,
+  //       isWalker = "true", [name]: checked
+  //       })
+  //     );
+  // }
 
   return (
     <div>
       <h2>Search Page</h2>
       <div>
-        <input 
-          type="checkbox" 
-          id="skillGrooming" 
-          name="isGroomer" 
-          value="true"
-          onChange={handleCheckboxChange}
-        />
+        <input type="checkbox" id="skillGrooming" name="isGroomer" value="true" onChange={(e) => setIsGroomer(e.target.value)}/>
         <label htmlFor="skillGrooming"> Grooming </label>
       </div>
       <div>
-        <input 
-          type="checkbox" 
-          id="skillSitting" 
-          name="isSitter" 
-          value="true"
-          onChange={handleCheckboxChange}
-        />
+        <input type="checkbox" id="skillSitting" name="isSitter" value="true" onChange={(e) => setIsSitter(e.target.value)}/>
         <label htmlFor="skillSitting"> Pet Sitting </label>
       </div>
       <div>
-        <input 
-          type="checkbox" 
-          id="skillTraining" 
-          name="isTrainer" 
-          value="true"
-          onChange={handleCheckboxChange}
-        />
+        <input type="checkbox" id="skillTraining" name="isTrainer" value="true" onChange={(e) => setIsTrainer(e.target.value)}/>
         <label htmlFor="skillTraining"> Training </label>
       </div>
       <div>
-        <input 
-          type="checkbox" 
-          id="skillWalking" 
-          name="isWalker" 
-          value="true"
-          onChange={handleCheckboxChange}
-        />
+        <input type="checkbox" id="skillWalking" name="isWalker" value="true" onChange={(e) => setIsWalker(e.target.value)}/>
         <label htmlFor="skillWalking"> Walking </label>
       </div>
       <div>
@@ -119,8 +118,15 @@ const ServiceSearch = () => {
         <div>
           <h3>Search Results:</h3>
           <ul>
-            {searchResults.map((index) => (
-              <li key={index}>{provider.name}</li>
+            {searchResults.map((provider,index) => (
+              <li key={index}>
+                <h2>{provider.name}</h2>
+                <p>Distance: {provider.distance} Miles</p>
+                <p>Groomer: {provider.groomer}</p>
+                <p>Sitter: {provider.sitter}</p>
+                <p>Walker: {provider.walker}</p>
+                <p>Trainer: {provider.trainer}</p>
+              </li>
             ))}
           </ul>
         </div>

@@ -27,8 +27,11 @@ const Login = () => {
       localStorage.setItem('username', JSON.stringify(username));
 
       console.log('Login successful', response.data);
-      console.log('Token:', token);
+      // console.log('Token:', token);
       console.log('Account Type:', accountType);
+
+      // const token = response.data;
+      localStorage.setItem('token', response.data);
 
       navigate('/WelcomeBack'); // Redirects to welcome back page if login successful
     } catch (error) {

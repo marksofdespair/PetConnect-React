@@ -56,7 +56,6 @@ function Pets() {
             <h2>{pet.name}</h2>
             <p>Species: {pet.species}</p>
             <p>Breed: {pet.breed}</p>
-            {/* Add more pet details here as needed */}
           </li>
         ))}
       </ul>
