@@ -84,10 +84,10 @@ const { name, username, accountType: userType, pets, reviews } = userData;
   
       {/* Conditionally render reviews */}
       {accountType === "Provider" && (
-      {/*}  <div>
+        <div>
           <h3>Reviews</h3>
-          <ReviewsComponent username={username} />
-        </div>*/}
+            {/*}<ReviewsComponent username={username} />*/}
+        </div>
       )}
     </div> 
   );  
