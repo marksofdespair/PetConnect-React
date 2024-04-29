@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import * as jwtDecode from 'jwt-decode';
 
 const Settings = () => {
   const [accountType, setAccountType] = useState('');
@@ -15,11 +14,10 @@ const Settings = () => {
     // Retrieve account type from local storage
     const storedAccountType = localStorage.getItem('accountType');
     if (storedAccountType) {
-      // Remove quotes from account type if present
-      const cleanedAccountType = storedAccountType.replace(/['"]+/g, '');
-      setAccountType(cleanedAccountType);
+      setAccountType(storedAccountType); // Set the state without modifications
     }
   }, []);
+  
 
   const handleNameChange = (event) => {
     setName(event.target.value);
@@ -53,6 +51,22 @@ const Settings = () => {
   return (
     <div>
       <h2>Settings</h2>
+      <div>
+        <label>
+          Password:
+          <input type="password" value={password} onChange={handlePasswordChange} />
+        </label>
+        <br />
+        <label>
+          Email:
+          <input type="email" value={email} onChange={handleEmailChange} />
+        </label>
+        <br />
+        <label>
+          Public Email:
+          <input type="email" value={publicEmail} onChange={handlePublicEmailChange} />
+        </label>
+      </div>
       {accountType === '"Provider"' && (
         <>
           <div>
@@ -76,33 +90,14 @@ const Settings = () => {
               <textarea value={about} onChange={handleAboutChange} />
             </label>
           </div>
-          <div>
-            <label>
-              Password:
-              <input type="password" value={password} onChange={handlePasswordChange} />
-            </label>
-            <br />
-            <label>
-              Email:
-              <input type="email" value={email} onChange={handleEmailChange} />
-            </label>
-            <br />
-            <label>
-              Public Email:
-              <input type="email" value={publicEmail} onChange={handlePublicEmailChange} />
-            </label>
-          </div>
+          <Link to="/AddService">Add Service</Link>
         </>
       )}
       <button type="submit" onClick={handleSubmit}>Save Changes</button>
       <br />
-      {accountType === '"Provider"' && (
-        <Link to="/AddService">Add Service</Link>
-      )}
-      <br></br>
-      <Link to="/userhome">Go Back</Link>
+      <Link to="/">Go Back</Link>
     </div>
-  );
+  );  
 };
 
 export default Settings;
