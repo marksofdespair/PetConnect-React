@@ -3,13 +3,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import * as jwtDecode from 'jwt-decode';
 
-// let username = localStorage.getItem('username');
-// // Check if username exists
-// if (!username) {
-//   throw new Error('Username not found in local storage');
-// }
 
-// username = username.replace(/^"|"$/g, '');
 function Pets() {
   
   let [pets, setPets] = useState([]);
@@ -62,7 +56,6 @@ function Pets() {
             <Link to={`/PetInfo/${pet.id}`}><h2>{pet.name}</h2></Link>
             <p>Species: {pet.species}</p>
             <p>Breed: {pet.breed}</p>
-            {/* Add more pet details here as needed */}
           </li>
         ))}
       </ul>
