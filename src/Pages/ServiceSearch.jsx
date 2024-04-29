@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom'
 import axios from 'axios';
 
 const ServiceSearch = () => {
@@ -9,8 +10,6 @@ const ServiceSearch = () => {
   const [isSitter, setIsSitter] = useState(null);
   const [isTrainer, setIsTrainer] = useState(null);
   const [isWalker, setIsWalker] = useState(null);
-
-  let searchResultsParsed = [];
 
   const apiUrl = '/api/services'; // Replace with actual API endpoint
 
@@ -120,7 +119,9 @@ const ServiceSearch = () => {
           <ul>
             {searchResults.map((provider,index) => (
               <li key={index}>
-                <h2>{provider.name}</h2>
+                <Link to={`/Profile/${provider.userId}`}>
+                  <h2>{provider.name}</h2>
+                </Link>
                 <p>Distance: {provider.distance} Miles</p>
                 <p>Groomer: {provider.groomer}</p>
                 <p>Sitter: {provider.sitter}</p>
