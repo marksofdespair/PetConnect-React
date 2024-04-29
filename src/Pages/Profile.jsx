@@ -10,43 +10,31 @@ const Profile = ({ accountType }) => {
   const [error, setError] = useState(null);
   
   // Get userId from URL parameters
- // const { userId } = useParams();
+  // const { userId } = useParams();
 
-let token = localStorage.getItem('Token');
-//   useEffect(()=>{
-//     setuserId(jwtDecode(token).subject)
-//   console.log(userId);
-//   }, [])
-// Console.log(userId);
+  let token = localStorage.getItem('Token');
 
   useEffect(() => {
-
     const fetchUserData = async () => {
-      
       try {
         const response = await axios.get(`http://localhost:8080/api/profile`, {
-               
-        headers: {
+          headers: {
             accept: "*/*",
             "Content-Type": "application/json",
             Authorization: token,
           }
-        })
-      
-        // if (!response.ok) {
-        //   throw new Error('Failed to fetch data');
-        // }
-       // const data = await response.json();
+        });
+        
         setUserData(response.data);
-        console.log(userData);
+        setIsLoading(false);
       } catch (error) {
         setError(error.message);
-      } finally {
         setIsLoading(false);
       }
     };
+
     fetchUserData();
-  }); // Add userId to the dependency array to re-fetch data when it changes
+  }, []); 
 
   if (isLoading) {
     return <div>Loading...</div>;
@@ -57,8 +45,7 @@ let token = localStorage.getItem('Token');
   }
 
   // Destructure user data
-const { name, username, email, accountType: userType, pets, reviews } = userData;
-
+  const { name, username, email, accountType: userType, pets, reviews } = userData;
 
   return (
     <div className="User-profile">
