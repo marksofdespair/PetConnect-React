@@ -5,12 +5,13 @@ import { useNavigate } from 'react-router-dom';
 const ReviewsComponent = ({ providerId }) => {
   // State to store the reviews
   const [reviews, setReviews] = useState([]);
+  const [error, setError] = useState(null);
 
   // Function to fetch reviews from the backend API
   const fetchReviews = async () => {
     try {
-      const response = await axios.get(`/api/provider-reviews/provider/`);
-      setReviews(response.data);
+      const response = await axios.get(`/api/provider-review/provider/${providerId}`);
+      setReviews(response.data.reviews);
     } catch (error) {
       setError(error.message);
     }
@@ -42,13 +43,14 @@ const ReviewsComponent = ({ providerId }) => {
       ) : (
         <ul>
           {reviews.map((review) => (
-            <li key={review.reviewid}>
+            <li key={review.id}>
               <strong>Rating:</strong> {review.rating}, <strong>Comment:</strong>{' '}
               <span onClick={() => handleClick(review.user.id)}>{review.user.name}</span>
             </li>
           ))}
         </ul>
       )}
+      {error && <p>Error: {error}</p>}
     </div>
   );
 };

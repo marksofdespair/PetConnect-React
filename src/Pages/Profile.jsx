@@ -39,6 +39,7 @@ const Profile = ({ accountType }, props) => {
         // }
        // const data = await response.json();
         setUserData(response.data);
+        console.log(userData);
       } catch (error) {
         setError(error.message);
       } finally {
