@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 
 const ServiceSearch = () => {
-  const [searchResults, setSearchResults] = useState([]);
+  let [searchResults, setSearchResults] = useState([]);
   const [zipCode, setZipCode] = useState('');
   const [distance, setDistance] = useState('');
   const [isGroomer, setIsGroomer] = useState(null);
@@ -10,29 +10,55 @@ const ServiceSearch = () => {
   const [isTrainer, setIsTrainer] = useState(null);
   const [isWalker, setIsWalker] = useState(null);
 
+  let searchResultsParsed = [];
+
   const apiUrl = '/api/services'; // Replace with actual API endpoint
 
   const handleSearch = async (event) => {
     event.preventDefault();
     try {
-      const params = {
+
+      const response = await axios.post('http://localhost:8080/api/providers/search', {
         zipCode,
         distance,
         isGroomer,
         isSitter,
         isTrainer,
         isWalker
-      };
-
-      const response = await axios.post('http://localhost:8080/api/providers/search', { params });
+      });
       // API Logic holding parking spot, ex axios.get(apiUrl, { params: { zipCode, distance } })
+
+      // let searchResultsParsed = [];
+
+      // for (let searchResult in response.data) {
+
+      //   let jsonParsed = JSON.parse(searchResult);
+
+      //   searchResultsParsed.push(jsonParsed);
+
+      // }
+
+      // console.log(searchResultsParsed);
+
       setSearchResults(response.data);
+
       console.log(`Searching for providers near zip code ${zipCode} within ${distance} miles.`);
       // Updates searchResults state based on API response
     } catch (error) {
       console.error('Error fetching search results:', error);
       // Sets searchResults to an empty array in case of errors
     }
+
+  //   for (let i = 0; i < searchResults.length; i++) {
+
+  //     let jsObject = JSON.parse(String.searchResults[i]);
+
+  //     searchResultsParsed.push(jsObject);
+
+  // }
+
+  // console.log(searchResultsParsed);
+
   };
 
   // const handleCheckboxChange = (e) => {
@@ -92,8 +118,15 @@ const ServiceSearch = () => {
         <div>
           <h3>Search Results:</h3>
           <ul>
-            {searchResults.map((provider, index) => (
-              <li key={index}>{provider.name}</li>
+            {searchResults.map((provider,index) => (
+              <li key={index}>
+                <h2>{provider.name}</h2>
+                <p>Distance: {provider.distance} Miles</p>
+                <p>Groomer: {provider.groomer}</p>
+                <p>Sitter: {provider.sitter}</p>
+                <p>Walker: {provider.walker}</p>
+                <p>Trainer: {provider.trainer}</p>
+              </li>
             ))}
           </ul>
         </div>
