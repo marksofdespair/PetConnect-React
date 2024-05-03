@@ -12,7 +12,7 @@ import AddCat from './Pages/User/AddCat';
 import AddDog from './Pages/User/AddDog';
 import DeletePet from './Pages/User/DeletePet';
 import PetInfo from './Pages/User/PetInfo';
-import Settings from './Pages/Settings'; // Assuming this is where your Settings component is located
+import Settings from './Pages/Settings'; 
 import AboutUs from './Pages/AboutUs';
 import RegisterForm from './Pages/RegisterForm';
 import LogoutPage from './Pages/LogoutPage';
@@ -38,7 +38,6 @@ const App = () => {
             <Route path="/AboutUs" element={<AboutUs />} /> {/* Route for AddService */}
             <Route path="/RegisterForm" element={<RegisterForm />} /> {/* Route for RegisterForm */}
             <Route path="/Profile" element={<Profile />} />
-            <Route path="Profile/:userId" element={<Profile />} />
             <Route path="/Pets" element={<Pets />} /> {/* Route for Pets */}
             <Route path="/AddCat" element={<AddCat />} /> {/* Route for AddCat */}
             <Route path="/AddDog" element={<AddDog />} /> {/* Route for AddDog */}

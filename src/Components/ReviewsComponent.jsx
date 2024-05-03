@@ -21,7 +21,7 @@ const ReviewsComponent = ({ providerId }) => {
   // useEffect (hook) to fetch reviews when the component mounts
   useEffect(() => {
     fetchReviews();
-  }, [providerId]); // Re-fetch reviews when providerId changes
+  }, []); // Re-fetch reviews when providerId changes
 
   const navigate = useNavigate();
 
