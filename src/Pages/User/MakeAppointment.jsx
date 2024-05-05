@@ -16,7 +16,15 @@ const MakeAppointment = () => {
   useEffect(() => {
     const fetchPets = async () => {
       try {
-        const response = await axios.get('http://localhost:8080/api/appointments/add-appointment');
+        let username = localStorage.getItem('username');
+        let token = localStorage.getItem('Token');
+        const response = await axios.get('http://localhost:8080/api/appointments/add-appointment', {
+            headers: {
+                accept: "*/*",
+                "Content-Type": "application/json",
+                Authorization: token,
+              },
+        });
         console.log('Response from API:', response.data);
         setPets(response.data);
       } catch (error) {
@@ -35,14 +43,8 @@ const MakeAppointment = () => {
         throw new Error('Username not found in local storage');
       }
       username = username.replace(/^"|"$/g, '');
-      let token = localStorage.getItem('Token');
 
       const response = await axios.post(`http://localhost:8080/api/appointments/${userId}/add-appointment`, {
-        headers: {
-            accept: "*/*",
-            "Content-Type": "application/json",
-            Authorization: token,
-          },
           name,
           description,
           setting,
