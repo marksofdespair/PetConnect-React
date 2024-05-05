@@ -11,6 +11,7 @@ import AddPet from './Pages/User/AddPet';
 import AddCat from './Pages/User/AddCat';
 import AddDog from './Pages/User/AddDog';
 import DeletePet from './Pages/User/DeletePet';
+import Appointments from './Pages/User/Appointments';
 import PetInfo from './Pages/User/PetInfo';
 import Settings from './Pages/Settings'; // Assuming this is where your Settings component is located
 import AboutUs from './Pages/AboutUs';
@@ -18,8 +19,15 @@ import RegisterForm from './Pages/RegisterForm';
 import LogoutPage from './Pages/LogoutPage';
 import WelcomeBack from './Pages/WelcomeBack';
 import Profile from './Pages/Profile';
+//Wills Stuff
+import Services from './Pages/Provider/Services';
+import ViewAppointment from './Pages/User/ViewAppointment';
+import DeleteAppointment from './Pages/User/DeleteAppointment';
+import ListProviders from './Pages/User/ListProviders';
+import MakeAppointment from './Pages/User/MakeAppointment';
 import './App.css';
 import './Layout';
+
 
 
 const App = () => {
@@ -43,9 +51,16 @@ const App = () => {
             <Route path="/AddDog" element={<AddDog />} /> {/* Route for AddDog */}
             <Route path="/AddPet" element={<AddPet />} /> {/* Route for AddPet */}
             <Route path="/DeletePet/:petId" element={<DeletePet />} /> {/* Route for DeletePet */}
+            <Route path="/Appointments" element={<Appointments />} /> {/* Route for Appointments */}
             <Route path="/PetInfo/:petId" element={<PetInfo />} /> {/* Route for PetInfo */}
             <Route path="/LogoutPage" element={<LogoutPage />} /> {/* Route for LogoutPage */}
             <Route path="/WelcomeBack" element = {<WelcomeBack />} /> {/* Route for WelcomeBack*/}
+            {/* Will's Stuff */}
+            <Route path="/Services" element = {<Services />} /> {/* Route for Services*/}
+            <Route path="/DeleteAppointment/:appointmentId" element={<DeleteAppointment/>}/>
+            <Route path="/ListProviders" element={<ListProviders/>}/>
+            <Route path="/:userId/MakeAppointment" element={<MakeAppointment/>}/>
+            <Route path="/ViewAppointment/:appointmentId" element = {<ViewAppointment/>} /> {/* Route for ViewAppointment*/}
           </Route>
         </Routes>
       </Router>

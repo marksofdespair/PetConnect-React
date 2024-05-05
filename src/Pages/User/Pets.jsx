@@ -35,6 +35,7 @@ function Pets() {
     }
 
     fetchPets();
+    console.log(pets);
   }, []);
 
     // Fetch pet data from the backend - only update if port or api URL changes.
