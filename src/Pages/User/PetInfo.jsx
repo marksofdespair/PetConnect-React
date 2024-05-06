@@ -33,8 +33,8 @@ function PetInfo() {
             
             <p>Species: {pet.species}</p>
             <p>Breed: {pet.breed}</p>
-            {/* <p>Description: {pet.petInfo.description}</p>
-            <p>Conditions: {pet.petInfo.conditions}</p> */}
+            <p>Bio: {pet.description}</p>
+            <p>Conditions: {pet.conditions}</p> 
             {/* Add more pet details here as needed */}
           
         
