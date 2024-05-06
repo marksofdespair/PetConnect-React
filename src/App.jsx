@@ -19,12 +19,13 @@ import RegisterForm from './Pages/RegisterForm';
 import LogoutPage from './Pages/LogoutPage';
 import WelcomeBack from './Pages/WelcomeBack';
 import Profile from './Pages/Profile';
-//Wills Stuff
+//Wills Stuff for Final Demo
 import Services from './Pages/Provider/Services';
 import ViewAppointment from './Pages/User/ViewAppointment';
 import DeleteAppointment from './Pages/User/DeleteAppointment';
 import ListProviders from './Pages/User/ListProviders';
 import MakeAppointment from './Pages/User/MakeAppointment';
+import AddPetInfo from './Pages/User/AddPetInfo';
 import './App.css';
 import './Layout';
 
@@ -61,6 +62,7 @@ const App = () => {
             <Route path="/ListProviders" element={<ListProviders/>}/>
             <Route path="/:userId/MakeAppointment" element={<MakeAppointment/>}/>
             <Route path="/ViewAppointment/:appointmentId" element = {<ViewAppointment/>} /> {/* Route for ViewAppointment*/}
+            <Route path="/:petId/AddPetInfo" element={<AddPetInfo/>} />
           </Route>
         </Routes>
       </Router>
