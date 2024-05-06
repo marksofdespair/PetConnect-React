@@ -48,7 +48,7 @@ let [appointment, setAppointment] = useState([]);
 
   return (
     <div>
-      <h1>Cancel appointment {appointment.name} for {appointment.pet}?</h1>
+      <h1>Cancel appointment {appointment.name} for {appointment.location} at {appointment.time}?</h1>
       <form onSubmit={handleSubmit}>
         <div className="form-group">
           <input type="submit" value="Cancel Appointment" className="btn btn-success" />

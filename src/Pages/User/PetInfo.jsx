@@ -42,7 +42,7 @@ function PetInfo() {
       <Link to={`/DeletePet/${petId}`}>
         <button>Remove Pet</button>
       </Link>
-      <Link to={`/DeletePet/${petId}`}>
+      <Link to={`/${petId}/AddPetInfo`}>
         <button>Update Profile</button>
       </Link>
     </div>

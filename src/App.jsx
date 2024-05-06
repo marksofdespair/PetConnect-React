@@ -26,8 +26,10 @@ import DeleteAppointment from './Pages/User/DeleteAppointment';
 import ListProviders from './Pages/User/ListProviders';
 import MakeAppointment from './Pages/User/MakeAppointment';
 import AddPetInfo from './Pages/User/AddPetInfo';
+import UpdatePet from './Pages/User/UpdatePet';
 import './App.css';
 import './Layout';
+
 
 
 
@@ -63,6 +65,7 @@ const App = () => {
             <Route path="/:userId/MakeAppointment" element={<MakeAppointment/>}/>
             <Route path="/ViewAppointment/:appointmentId" element = {<ViewAppointment/>} /> {/* Route for ViewAppointment*/}
             <Route path="/:petId/AddPetInfo" element={<AddPetInfo/>} />
+            <Route path="/UpdatePet/:petId" element ={<UpdatePet/>}/>
           </Route>
         </Routes>
       </Router>

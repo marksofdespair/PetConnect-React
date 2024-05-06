@@ -54,7 +54,7 @@ const AddPetInfo = () => {
 
   return (
     <div>
-      <h1>Create a Pet Bio for {pet.name}:</h1>
+      <h1>Update a Pet Bio for {pet.name}:</h1>
       <form onSubmit={handleSubmit}>
         <div className="form-group">
           <label>Bio:</label>

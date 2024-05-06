@@ -8,6 +8,7 @@ const MakeAppointment = () => {
   const [setting, setSetting] = useState('');
   const { userId } = useParams();
   const [description, setDescription] = useState('');
+  const [time, setTime] = useState('');
   const [pet, setPet] = useState('');
   const [pets, setPets] = useState([]);
   const [successMessage, setSuccessMessage] = useState('');
@@ -48,12 +49,14 @@ const MakeAppointment = () => {
           name,
           description,
           setting,
+          time,
           pet
       });
       setSuccessMessage('Appointment added successfully!');
       setName('');
       setSetting('');
       setDescription('');
+      setTime('');
     } catch (error) {
       setErrorMessage('Failed to add appointment. Please try again.');
     }
@@ -68,8 +71,12 @@ const MakeAppointment = () => {
           <input type="text" value={name} onChange={(e) => setName(e.target.value)} className="form-control" />
         </div>
         <div className="form-group">
-          <label>Place and Time:</label>
+          <label>Location:</label>
           <input type="text" value={setting} onChange={(e) => setSetting(e.target.value)} className="form-control" />
+        </div>
+        <div className="form-group">
+          <label>Time:</label>
+          <input type="text" value={time} onChange={(e) => setTime(e.target.value)} className="form-control" />
         </div>
         <div className="form-group">
           <label>Appointment Description:</label>

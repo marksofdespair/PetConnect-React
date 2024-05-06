@@ -31,9 +31,11 @@ function PetInfo() {
     <div>
       <h1>{appointment.name}</h1>
             
-            <p>Pet: {appointment.pet}</p>
+            {/* <p>Pet: {appointment.pet}</p> */}
             <p>Location: {appointment.setting}</p>
-            <p>Provider: {appointment.provider}</p>
+            <p>Time: {appointment.time}</p>
+            <p>Description: {appointment.description}</p>
+            {/* <p>Provider: {appointment.provider}</p> */}
           
         
       

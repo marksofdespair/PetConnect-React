@@ -39,17 +39,17 @@ useEffect(() => {
 return (
     <div>
       <h1>My Appointments</h1>
-      <Link to="/MakeAppointment">
+      <Link to="/ListProviders">
         <button>Add New</button>
       </Link>
       <ul>
         {appointments.map(appointment => (
           <li key={appointment.id}>
             {/* Figure out how to pull the userid from the appointment */}
-            <Link to={`/ViewAppointment/${appointment.id}`}><h2>[link]{appointment.pet}</h2></Link>
-            <p>Appointment: {appointment.name}</p>
+            <Link to={`/ViewAppointment/${appointment.id}`}><h2>{appointment.name}</h2></Link>
             <p>Location: {appointment.setting}</p>
-            <p>Provider: {appointment.provider}</p>
+            <p>Time: {appointment.time}</p>
+            <p>Description: {appointment.description}</p>
           </li>
         ))}
       </ul>
