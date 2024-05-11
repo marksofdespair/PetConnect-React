@@ -14,7 +14,7 @@ const Settings = () => {
     // Retrieve account type from local storage
     const storedAccountType = localStorage.getItem('accountType');
     if (storedAccountType) {
-      setAccountType(storedAccountType); // Set the state without modifications
+      setAccountType(storedAccountType); // Set the state without modifications this time
     }
   }, []);
   
