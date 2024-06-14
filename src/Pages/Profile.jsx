@@ -10,16 +10,8 @@ const Profile = ({ accountType }, props) => {
   const [error, setError] = useState(null);
 
   const { userId } = useParams();
-  
-  // Get userId from URL parameters
-  // const { userId } = useParams();
 
   let token = localStorage.getItem('Token');
-//   useEffect(()=>{
-//     setuserId(jwtDecode(token).subject)
-//   console.log(userId);
-//   }, [])
-// Console.log(userId);
 
   useEffect(() => {
     const fetchUserData = async () => {
