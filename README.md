@@ -7,7 +7,7 @@ Currently, two official plugins are available:
 
 Written for the PetConnect Capstone Project by Team Laika 2024. Project proposal on GDocs
 
-Several pages and components are currently nonfunctional but routed. Should work better once Axios is set up and pulling in data.
+All pages are functional and data is being pulled in through Axios APIs.
 - Most of the CSS is labeled. If you need to make changes for your individual features these are labeled appropriately.
 - If you are adding on to the CSS, please label it and note what features it's affecting.
 - Add new pages in App.jsx and route them using syntax <Route path="/PAGENAME" element={<ELEMENT />} /> {/* Rout for ELEMENT */} 
