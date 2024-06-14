@@ -15,5 +15,4 @@ Several pages and components are currently nonfunctional but routed. Should work
 
 # KNOWN ISSUE
 
-- Provider and User profiles render but fail to fetch information. Not necessarily an issue with React build itself, will require further testing
 - Breed lists may be slow to populate, do NOT refresh page without giving it a chance! It's just being a baby.
