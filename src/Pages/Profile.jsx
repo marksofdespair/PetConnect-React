@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import ReviewsComponent from '../Components/ReviewsComponent';
 import axios from 'axios';
+import PawPointSm from '../assets/PawPointSm.png';
 
 const Profile = ({ accountType }, props) => {
   const [userData, setUserData] = useState(null);
@@ -57,7 +58,7 @@ const Profile = ({ accountType }, props) => {
 
 return (
   <div className="User-profile">
-    <h2>User Profile</h2>
+    <img src={PawPointSm} alt="Paw symbol" /><h2>User Profile</h2>
     <p>Name: {name}</p>
     <p>Username: {username}</p>
     <p>Email: {email}</p>
