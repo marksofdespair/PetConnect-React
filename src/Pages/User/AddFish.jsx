@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 
 // Dont look at this its just copy-pasted cat page LMAO
-const AddDog = () => {
+const AddFish = () => {
   const [name, setName] = useState('');
   const [breed, setBreed] = useState('');
   const [breeds, setBreeds] = useState([]);
@@ -41,4 +41,4 @@ const AddDog = () => {
   );
 };
 
-export default AddDog;
+export default AddFish;
