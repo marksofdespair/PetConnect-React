@@ -24,9 +24,6 @@ const AddFish = () => {
           <select value={breed} onChange={(e) => setBreed(e.target.value)} className="form-select">
             <option value="">Select Type</option>
             {breeds.map((catBreed, index) => (
-              <option key={index} value={catBreed.name}>
-                {catBreed.name}
-              </option>
             ))}
           </select>
         </div>
