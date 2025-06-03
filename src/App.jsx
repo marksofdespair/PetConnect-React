@@ -38,6 +38,7 @@ const App = () => {
             <Route path="/AboutUs" element={<AboutUs />} /> {/* Route for AddService */}
             <Route path="/RegisterForm" element={<RegisterForm />} /> {/* Route for RegisterForm */}
             <Route path="/Profile" element={<Profile />} />
+            <Route path="/Profile/:userId" element={<Profile />} />
             <Route path="/Pets" element={<Pets />} /> {/* Route for Pets */}
             <Route path="/AddCat" element={<AddCat />} /> {/* Route for AddCat */}
             <Route path="/AddDog" element={<AddDog />} /> {/* Route for AddDog */}
