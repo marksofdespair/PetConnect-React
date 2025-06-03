@@ -103,15 +103,6 @@ const ServiceSearch = () => {
           onChange={(e) => setZipCode(e.target.value)}
         />
       </div>
-      <div>
-        <label htmlFor="distance">Enter Distance (in miles):</label>
-        <input
-          type="number"
-          id="distance"
-          value={distance}
-          onChange={(e) => setDistance(e.target.value)}
-        />
-      </div>
       <button onClick={handleSearch}>Search</button>
       {searchResults.length > 0 ? (
         <div>
